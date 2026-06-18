@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Details - Corporate - Alliance Insurance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #405C75;
+            --primary-dark: #2c3e50;
+            --burgundy: #8B2332;
+            --burgundy-dark: #6d1b27;
+            --accent: #a53d4d;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #d4c5b9;
+            --shadow: rgba(74, 95, 127, 0.08);
+            --success: #2d7a4f;
+            --warning: #d97706;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #f5f1eb 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 4px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-home-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        .logo-sub {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        .notice {
+            background: linear-gradient(to right, #f0f4f8, #fefeff);
+            border-left: 4px solid var(--burgundy);
+            padding: 1.25rem 2rem;
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--burgundy);
+            margin-left: 0.25rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="url"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 0 3px rgba(139, 58, 82, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .checkbox-item label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::before {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.75rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .radio-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-item label {
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .radio-item label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .radio-item input[type="radio"]:checked+label::before {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+        }
+
+        .radio-item input[type="radio"]:checked+label::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .card {
+            background: var(--bg-cream);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .note {
+            background: #f0f4f8;
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note strong {
+            color: var(--text-dark);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(74, 95, 127, 0.05) 0%, rgba(139, 58, 82, 0.05) 100%);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .shareholders-table {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1.5px solid var(--border);
+        }
+
+        .shareholders-table th,
+        .shareholders-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .shareholders-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .shareholders-table td {
+            background: var(--bg-white);
+            padding: 0.5rem;
+        }
+
+        .shareholders-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .shareholders-table input[type="text"],
+        .shareholders-table input[type="number"] {
+            width: 100%;
+            padding: 0.625rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .shareholders-table .row-number {
+            width: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+
+        .add-row-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .add-row-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .conditional-field {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--burgundy);
+        }
+
+        .submit-container {
+            margin-top: 3rem;
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a5f7f 0%, #8b3a52 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 58, 82, 0.3);
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 58, 82, 0.4);
+            background: linear-gradient(135deg, #3d4f67 0%, #6d2d40 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .save-draft-btn {
+            background: var(--bg-white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .save-draft-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row-2,
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .submit-container {
+                flex-direction: column;
+            }
+
+            .submit-btn,
+            .save-draft-btn {
+                width: 100%;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+            }
+
+            .checkbox-item {
+                min-width: auto;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .shareholders-table {
+                font-size: 0.8rem;
+            }
+
+            .shareholders-table th,
+            .shareholders-table td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Signature Canvas Styles */
+        .signature-canvas {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            touch-action: none;
+        }
+
+        .signature-canvas:hover {
+            border-color: var(--burgundy);
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .signature-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signature-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <div class="logo-container">
+                <img src="./logo.jpg" alt="Alliance Insurance" class="logo-img">
+            </div>
+            <a href="index.html" class="back-home-btn">
+                <span>←</span>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="header">
+            <h1>KYC Details - Corporate</h1>
+            <p class="subtitle">Know Your Customer Information Form</p>
+        </div>
+
+        <div class="notice">
+            Please complete all sections accurately. This information is required for regulatory compliance and to
+            ensure the security of your corporate account.
+        </div>
+
+        <form class="form-content" id="kycCorporateForm">
+            <!-- Section 1: Company Information -->
+            <div class="section" data-section="1">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2 class="section-title">Company Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyName">Full Company Name <span class="required">*</span></label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registrationNumber">Registration Number <span class="required">*</span></label>
+                    <input type="text" id="registrationNumber" name="registrationNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Organization Type <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="privateLimited" name="orgType" value="privateLimited">
+                            <label for="privateLimited">Private Limited Company</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="publicCompany" name="orgType" value="publicCompany">
+                            <label for="publicCompany">Public Company</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="government" name="orgType" value="government">
+                            <label for="government">Government / Quasi Government</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="parastatal" name="orgType" value="parastatal">
+                            <label for="parastatal">Parastatal</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ngo" name="orgType" value="ngo">
+                            <label for="ngo">NGO (Charities & Foundations)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="orgTypeOther" name="orgType" value="other">
+                            <label for="orgTypeOther">Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="orgTypeOtherField" style="display: none;">
+                    <label for="orgTypeSpecify">Please specify organization type <span class="required">*</span></label>
+                    <input type="text" id="orgTypeSpecify" name="orgTypeSpecify">
+                </div>
+
+                <div class="form-group">
+                    <label for="industrySector">Industry / Sector and Brief Description of Business <span
+                            class="required">*</span></label>
+                    <textarea id="industrySector" name="industrySector" rows="4"
+                        placeholder="e.g., Financial Services - Providing insurance products and risk management solutions..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" id="website" name="website" placeholder="https://www.example.com">
+                </div>
+            </div>
+
+            <!-- Section 2: Contact Information -->
+            <div class="section" data-section="2">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h2 class="section-title">Contact Information</h2>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="contactPerson">Contact Person <span class="required">*</span></label>
+                        <input type="text" id="contactPerson" name="contactPerson" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="designation">Designation <span class="required">*</span></label>
+                        <input type="text" id="designation" name="designation"
+                            placeholder="e.g., CEO, Managing Director" required>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number <span class="required">*</span></label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address of Contact Person <span
+                                class="required">*</span></label>
+                        <input type="email" id="contactEmail" name="contactEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="physicalAddress">Physical Address <span class="required">*</span></label>
+                    <textarea id="physicalAddress" name="physicalAddress" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="postalAddress">Postal Address <span class="required">*</span></label>
+                    <textarea id="postalAddress" name="postalAddress" rows="3" required></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3: Shareholders & Directors -->
+            <div class="section" data-section="3">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h2 class="section-title">Shareholders & Directors</h2>
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Please provide a list of all shareholders with a shareholding of 20% and
+                    above.
+                </div>
+
+                <table class="shareholders-table" id="shareholdersTable">
+                    <thead>
+                        <tr>
+                            <th class="row-number">#</th>
+                            <th>Name</th>
+                            <th>Country of Residence</th>
+                            <th>Shareholding %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-number">1</td>
+                            <td><input type="text" name="shareholderName1" required></td>
+                            <td><input type="text" name="shareholderCountry1" required></td>
+                            <td><input type="number" name="shareholderPercent1" min="20" max="100" step="0.01" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">2</td>
+                            <td><input type="text" name="shareholderName2"></td>
+                            <td><input type="text" name="shareholderCountry2"></td>
+                            <td><input type="number" name="shareholderPercent2" min="20" max="100" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">3</td>
+                            <td><input type="text" name="shareholderName3"></td>
+                            <td><input type="text" name="shareholderCountry3"></td>
+                            <td><input type="number" name="shareholderPercent3" min="20" max="100" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">4</td>
+                            <td><input type="text" name="shareholderName4"></td>
+                            <td><input type="text" name="shareholderCountry4"></td>
+                            <td><input type="number" name="shareholderPercent4" min="20" max="100" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">5</td>
+                            <td><input type="text" name="shareholderName5"></td>
+                            <td><input type="text" name="shareholderCountry5"></td>
+                            <td><input type="number" name="shareholderPercent5" min="20" max="100" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 4: Related Entities -->
+            <div class="section" data-section="4">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2 class="section-title">Related / Associated Entities</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="relatedEntities">Names of Related / Associated Entities</label>
+                    <textarea id="relatedEntities" name="relatedEntities" rows="4"
+                        placeholder="List any subsidiaries, parent companies, or associated entities..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5: Political Exposure -->
+            <div class="section" data-section="5">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h2 class="section-title">Political & Government Association</h2>
+                </div>
+
+                <div class="info-box">
+                    <p style="line-height: 1.8;">
+                        <strong>Important:</strong> Please disclose any association with government or political parties
+                        through shareholding, partnership, customer relationships, or any other connection.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>Is your organization / any of the shareholders or directors in any way associated with
+                            the government or political party? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="govAssociationYes" name="govAssociation" value="yes" required>
+                                <label for="govAssociationYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="govAssociationNo" name="govAssociation" value="no">
+                                <label for="govAssociationNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conditional-field" id="govAssociationDetailsSection" style="display: none;">
+                        <div class="form-group">
+                            <label for="govAssociationDetails">If your answer is Yes, please clarify nature of the
+                                relationship <span class="required">*</span></label>
+                            <textarea id="govAssociationDetails" name="govAssociationDetails" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Banking Details -->
+            <div class="section" data-section="6">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2 class="section-title">Banking Details</h2>
+                </div>
+
+                <div class="note">
+                    <strong>Banking Information:</strong> Please provide your primary corporate banking details
+                </div>
+
+                <div class="form-group">
+                    <label for="accountName">Account Name <span class="required">*</span></label>
+                    <input type="text" id="accountName" name="accountName" required>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="bankName">Bank <span class="required">*</span></label>
+                        <input type="text" id="bankName" name="bankName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number <span class="required">*</span></label>
+                        <input type="text" id="accountNumber" name="accountNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branch">Branch <span class="required">*</span></label>
+                        <input type="text" id="branch" name="branch" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Auditors -->
+            <div class="section" data-section="7">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h2 class="section-title">Auditors Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="auditorsName">Name of Auditors <span class="required">*</span></label>
+                    <input type="text" id="auditorsName" name="auditorsName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="auditorsAddress">Address of Auditors <span class="required">*</span></label>
+                    <textarea id="auditorsAddress" name="auditorsAddress" rows="3" required></textarea>
+                </div>
+            </div>
+
+            <!-- Section 8: Declaration -->
+            <div class="section" data-section="8">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <h2 class="section-title">Declaration</h2>
+                </div>
+
+                <div class="info-box">
+                    <p style="line-height: 1.8;">
+                        I/We hereby declare that the information provided in this KYC form is true, accurate, and
+                        complete to the best of my/our knowledge. I/We understand that any false or misleading
+                        information may result in the rejection of the application or termination of services. I/We also
+                        consent to Alliance Insurance Company verifying the information provided and conducting any
+                        necessary background checks in accordance with applicable laws and regulations.
+                    </p>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="authorizedPerson">Authorized Person Name <span class="required">*</span></label>
+                        <input type="text" id="authorizedPerson" name="authorizedPerson" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authorizedPosition">Position/Title <span class="required">*</span></label>
+                        <input type="text" id="authorizedPosition" name="authorizedPosition" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="declarationDate">Date <span class="required">*</span></label>
+                        <input type="date" id="declarationDate" name="declarationDate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signature">Signature <span class="required">*</span></label>
+                    <div class="signature-container">
+                        <canvas id="signatureCanvas" class="signature-canvas" width="600" height="200"></canvas>
+                        <input type="hidden" id="signature" name="signature" required>
+                        <div class="signature-controls">
+                            <div style="display: flex; gap: 10px;">
+                                <button type="button" class="signature-btn" id="clearBtn">Clear</button>
+                                <label class="signature-btn">
+                                    Upload Image
+                                    <input type="file" id="signatureUpload" accept="image/*" style="display: none;">
+                                </label>
+                            </div>
+                            <span style="font-size: 11px; color: #888;">Sign above or upload</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <strong>Company Stamp/Seal:</strong> Please ensure this form is stamped with your company's official
+                    seal before submission.
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="button" class="save-draft-btn">Save as Draft</button>
+                <button type="submit" class="submit-btn">Submit KYC Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Progress bar
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const totalSections = sections.length;
+            let completedSections = 0;
+
+            sections.forEach(section => {
+                const inputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+                let allFilled = true;
+
+                inputs.forEach(input => {
+                    // Skip hidden fields
+                    if (input.offsetParent === null) return;
+
+                    if (input.type === 'radio') {
+                        const name = input.name;
+                        const checked = section.querySelector(`input[name="${name}"]:checked`);
+                        if (!checked && input.hasAttribute('required')) {
+                            allFilled = false;
+                        }
+                    } else if (input.type === 'checkbox') {
+                        // For checkboxes, at least one should be checked if required
+                        const name = input.name;
+                        const checkboxes = section.querySelectorAll(`input[name="${name}"]`);
+                        const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+                        if (!anyChecked && input.hasAttribute('required')) {
+                            allFilled = false;
+                        }
+                    } else if (!input.value) {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) completedSections++;
+            });
+
+            const progress = (completedSections / totalSections) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Organization type "Other" field
+        document.getElementById('orgTypeOther').addEventListener('change', function () {
+            const otherField = document.getElementById('orgTypeOtherField');
+            if (this.checked) {
+                otherField.style.display = 'block';
+                document.getElementById('orgTypeSpecify').setAttribute('required', 'required');
+            } else {
+                otherField.style.display = 'none';
+                document.getElementById('orgTypeSpecify').removeAttribute('required');
+            }
+            updateProgress();
+        });
+
+        // Government association conditional fields
+        document.querySelectorAll('input[name="govAssociation"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const detailsSection = document.getElementById('govAssociationDetailsSection');
+                if (this.value === 'yes') {
+                    detailsSection.style.display = 'block';
+                    document.getElementById('govAssociationDetails').setAttribute('required', 'required');
+                } else {
+                    detailsSection.style.display = 'none';
+                    document.getElementById('govAssociationDetails').removeAttribute('required');
+                }
+                updateProgress();
+            });
+        });
+
+        // Set current date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('declarationDate').value = today;
+
+        // Monitor all inputs for progress
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('change', updateProgress);
+            element.addEventListener('input', updateProgress);
+        });
+
+        // Initial progress calculation
+        updateProgress();
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const signatureInput = document.getElementById('signature');
+        const clearBtn = document.getElementById('clearBtn');
+        const signatureUpload = document.getElementById('signatureUpload');
+
+        let isDrawing = false;
+        let ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#2c3e50';
+
+            const startDrawing = (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+
+            const draw = (e) => {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            };
+
+            const stopDrawing = () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveSignature();
+                }
+            };
+
+            const saveSignature = () => {
+                signatureInput.value = canvas.toDataURL();
+                updateProgress();
+            };
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = '';
+                updateProgress();
+            });
+
+            signatureUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            saveSignature();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('kycForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Validate at least one organization type is selected
+            const orgTypes = document.querySelectorAll('input[name="orgType"]:checked');
+            if (orgTypes.length === 0) {
+                alert('Please select at least one organization type');
+                return;
+            }
+
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting…';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('http://localhost:3001/api/kyc-corporate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ Corporate KYC form submitted successfully!\n\nReference Number: ${result.referenceNumber}\n\nAlliance Insurance Company will review your details and contact you if additional information is required.`);
+                    this.reset();
+                } else {
+                    alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                console.error('Submission error:', err);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Save draft
+        document.querySelector('.save-draft-btn').addEventListener('click', function () {
+            const formData = new FormData(document.getElementById('kycCorporateForm'));
+            const data = Object.fromEntries(formData);
+
+            // Save checkbox states
+            const orgTypes = [];
+            document.querySelectorAll('input[name="orgType"]:checked').forEach(cb => {
+                orgTypes.push(cb.value);
+            });
+            data.orgTypes = orgTypes;
+
+            localStorage.setItem('kycCorporateDraft', JSON.stringify(data));
+            alert('Draft saved successfully! You can continue later.');
+        });
+
+        // Load draft on page load
+        window.addEventListener('load', function () {
+            const draft = localStorage.getItem('kycCorporateDraft');
+            if (draft && confirm('Would you like to load your saved draft?')) {
+                const data = JSON.parse(draft);
+                Object.keys(data).forEach(key => {
+                    if (key === 'orgTypes') {
+                        // Restore checkbox states
+                        data[key].forEach(value => {
+                            const checkbox = document.querySelector(`input[name="orgType"][value="${value}"]`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                if (value === 'other') {
+                                    document.getElementById('orgTypeOther').dispatchEvent(new Event('change'));
+                                }
+                            }
+                        });
+                    } else {
+                        const element = document.querySelector(`[name="${key}"]`);
+                        if (element) {
+                            if (element.type === 'radio') {
+                                const radio = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+                                if (radio) {
+                                    radio.checked = true;
+                                    radio.dispatchEvent(new Event('change'));
+                                }
+                            } else {
+                                element.value = data[key];
+                            }
+                        }
+                    }
+                });
+                updateProgress();
+            }
+        });
+    </script>
+</body>
+
+</html>

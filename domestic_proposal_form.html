@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domestic Combined Insurance Proposal - Alliance Insurance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #405C75;
+            --primary-dark: #2c3e50;
+            --burgundy: #8B2332;
+            --burgundy-dark: #6d1b27;
+            --accent: #a53d4d;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #d4c5b9;
+            --shadow: rgba(74, 95, 127, 0.08);
+            --shadow-hover: rgba(74, 95, 127, 0.15);
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #f5f1eb 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 2px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-home-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #405C75 0%, #4B6B8A 25%, #7D4C5D 75%, #8B2332 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        .logo-sub {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .header .company-info {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        .notice {
+            background: linear-gradient(to right, #f0f4f8, #fefeff);
+            border-left: 4px solid var(--burgundy);
+            padding: 1.25rem 2rem;
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--burgundy);
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 1px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group input[type="date"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 0 4px rgba(139, 35, 50, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label,
+        .radio-item label {
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .checkbox-item label::before,
+        .radio-item label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item label::before {
+            border-radius: 2px;
+        }
+
+        .radio-item label::before {
+            border-radius: 50%;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::before,
+        .radio-item input[type="radio"]:checked+label::before {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .radio-item input[type="radio"]:checked+label::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .construction-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-cream);
+            border-radius: 2px;
+        }
+
+        .construction-section h4 {
+            font-weight: 600;
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .note {
+            background: #f0f4f8;
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .note strong {
+            color: var(--text-dark);
+        }
+
+        .definition-box {
+            background: var(--bg-cream);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 2px;
+        }
+
+        .definition-box h4 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .definition-box p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .all-risks-table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 2px;
+            border: 1.5px solid var(--border);
+        }
+
+        .all-risks-table th,
+        .all-risks-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .all-risks-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .all-risks-table td {
+            background: var(--bg-white);
+        }
+
+        .all-risks-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .all-risks-table input[type="text"],
+        .all-risks-table input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 1px;
+        }
+
+        .declaration-box {
+            background: linear-gradient(135deg, #f9f9f9 0%, var(--bg-cream) 100%);
+            border: 2px solid var(--burgundy);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 2px;
+        }
+
+        .declaration-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .declaration-box p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .submit-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 35, 50, 0.3);
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 35, 50, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--burgundy-dark) 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .construction-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .all-risks-table {
+                font-size: 0.9rem;
+            }
+
+            .all-risks-table th,
+            .all-risks-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 1rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .checkbox-group,
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Signature Canvas Styles */
+        .signature-canvas {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            touch-action: none;
+        }
+
+        .signature-canvas:hover {
+            border-color: var(--burgundy);
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .signature-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signature-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <div class="nav-header">
+        <div class="logo-container">
+            <img src="./logo.jpg" alt="Alliance Insurance" class="logo-img">
+        </div>
+        <a href="index.html" class="back-home-btn">
+            <span>←</span>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Domestic Combined Insurance Proposal</h1>
+            <p class="company-info">Alliance Insurance Company Private Limited<br>
+                66 Ridgeway North, P.O Box BW 336, Borrowdale, Harare<br>
+                TEL: 882060, Fax: 882229</p>
+        </div>
+
+        <div class="notice">
+            NO COVER IS IN FORCE UNTIL THE COMPANY HAS ACCEPTED THE PROPOSAL
+        </div>
+
+        <form class="form-content" id="insuranceForm">
+            <!-- Personal Information Section -->
+            <div class="section">
+                <h2 class="section-title">Proposer Information</h2>
+
+                <div class="form-group">
+                    <label for="fullName">Proposer's Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="postalAddress">Postal Address *</label>
+                    <textarea id="postalAddress" name="postalAddress" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="occupation">Occupation *</label>
+                        <input type="text" id="occupation" name="occupation" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Telephone Number *</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="premisesSituation">Situation of Premises *</label>
+                    <input type="text" id="premisesSituation" name="premisesSituation" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Type of Residence *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="house" name="residenceType" value="house" required>
+                            <label for="house">House</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="semiDetached" name="residenceType" value="semiDetached">
+                            <label for="semiDetached">Semi Detached</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="flat" name="residenceType" value="flat">
+                            <label for="flat">Flat</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Details Section -->
+            <div class="section">
+                <h2 class="section-title">Property Details</h2>
+
+                <div class="form-group">
+                    <label>1. Are you and your family the sole occupants of the premises? *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="soleOccupantsYes" name="soleOccupants" value="yes" required>
+                            <label for="soleOccupantsYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="soleOccupantsNo" name="soleOccupants" value="no">
+                            <label for="soleOccupantsNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="occupantsDetailsGroup" style="display: none;">
+                    <label for="occupantsDetails">If No, please give details:</label>
+                    <textarea id="occupantsDetails" name="occupantsDetails"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Construction</label>
+                    <div class="construction-grid">
+                        <div class="construction-section">
+                            <h4>Walls</h4>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="wallBrick" name="walls" value="brick">
+                                    <label for="wallBrick">Brick</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="wallConcrete" name="walls" value="concrete">
+                                    <label for="wallConcrete">Concrete</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="wallWood" name="walls" value="wood">
+                                    <label for="wallWood">Wood</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="wallOther" name="walls" value="other">
+                                    <label for="wallOther">Other</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="construction-section">
+                            <h4>Roof</h4>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="roofTile" name="roof" value="tile">
+                                    <label for="roofTile">Tile</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="roofAsbestos" name="roof" value="asbestos">
+                                    <label for="roofAsbestos">Asbestos</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="roofWood" name="roof" value="wood">
+                                    <label for="roofWood">Wood</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="roofThatch" name="roof" value="thatch">
+                                    <label for="roofThatch">Thatch</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="roofOther" name="roof" value="other">
+                                    <label for="roofOther">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="constructionOtherGroup" style="display: none;">
+                    <label for="constructionOther">If "Other" please specify:</label>
+                    <input type="text" id="constructionOther" name="constructionOther">
+                </div>
+
+                <div class="form-group">
+                    <label>3. Is the house fitted with an alarm? *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="alarmYes" name="hasAlarm" value="yes" required>
+                            <label for="alarmYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="alarmNo" name="hasAlarm" value="no">
+                            <label for="alarmNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="alarmDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Alarm Type</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="alarmRadio" name="alarmType" value="radio">
+                                <label for="alarmRadio">Radio</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="alarmSiren" name="alarmType" value="siren">
+                                <label for="alarmSiren">Siren</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="alarmTelephone" name="alarmType" value="telephone">
+                                <label for="alarmTelephone">Telephone</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is the alarm linked to a Reaction Team?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="reactionYes" name="reactionTeam" value="yes">
+                                <label for="reactionYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reactionNo" name="reactionTeam" value="no">
+                                <label for="reactionNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="reactionTeamNameGroup" style="display: none;">
+                        <label for="reactionTeamName">Please state which one:</label>
+                        <input type="text" id="reactionTeamName" name="reactionTeamName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Will premises be unoccupied for more than 60 days in one year? *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="unoccupiedYes" name="unoccupied" value="yes" required>
+                            <label for="unoccupiedYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="unoccupiedNo" name="unoccupied" value="no">
+                            <label for="unoccupiedNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="unoccupiedDaysGroup" style="display: none;">
+                    <label for="unoccupiedDays">Number of days:</label>
+                    <input type="number" id="unoccupiedDays" name="unoccupiedDays" min="61">
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Occupation of Domestic Outbuildings does not constitute occupation of the
+                    premises
+                </div>
+
+                <div class="form-group">
+                    <label>5. Has any Insurer ever declined to accept or refused to renew any of your Insurances?
+                        *</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="declinedYes" name="insuranceDeclined" value="yes" required>
+                            <label for="declinedYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="declinedNo" name="insuranceDeclined" value="no">
+                            <label for="declinedNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="declinedDetailsGroup" style="display: none;">
+                    <label for="declinedDetails">If "Yes" please give details:</label>
+                    <textarea id="declinedDetails" name="declinedDetails"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="lossDetails">6. Give full particulars of losses sustained by you in respect of all
+                        contingencies to which this Proposal applies:</label>
+                    <textarea id="lossDetails" name="lossDetails"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="securityMeasures">7. What measures have been taken to secure the premises and prevent
+                        similar losses occurring in future?</label>
+                    <textarea id="securityMeasures" name="securityMeasures"></textarea>
+                </div>
+            </div>
+
+            <!-- Insurance Coverage Section -->
+            <div class="section">
+                <h2 class="section-title">Insurance Coverage</h2>
+
+                <div class="form-group">
+                    <label for="buildingsValue">HOUSEOWNERS (Buildings and Fittings) - Total Value ($)</label>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">
+                        Including Private Garages, Outbuildings, Walls, Gates and Fences, Pools, Pool and Pond Pumps,
+                        Tennis Courts,
+                        Sauna Baths, Borehole Pumps and Motors, Satellite Dishes, Aerials and Masts, Alarm Systems and
+                        Landlord's
+                        Fixtures and Fittings therein or thereon including permanent or fitted carpets nailed or glued
+                        to the floor.
+                    </p>
+                    <input type="number" id="buildingsValue" name="buildingsValue" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="contentsValue">HOUSEHOLDERS (Contents) - Total Value ($)</label>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">
+                        Full value of all the contents of the premises (excluding contents more specifically insured)
+                    </p>
+                    <input type="number" id="contentsValue" name="contentsValue" step="0.01" min="0">
+                </div>
+
+                <div class="note">
+                    Cover automatically includes Guests Effects up to 1% of sum insured and Domestic Workers property up
+                    to $500.00
+                    (excluding money), but if additional cover is required, please state below:
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guestsEffects">Guests Personal Effects ($)</label>
+                        <input type="number" id="guestsEffects" name="guestsEffects" step="0.01" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workersProperty">Domestic Workers Property ($)</label>
+                        <input type="number" id="workersProperty" name="workersProperty" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="audioVisualEquipment">Please provide details of Audio and Visual Equipment (including
+                        Make, Model and Serial Numbers):</label>
+                    <textarea id="audioVisualEquipment" name="audioVisualEquipment"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Does the total value of Gold, Silver, Platinum Jewellery and Furs exceed one third of the
+                        total sum insured?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="jewelleryExceedsYes" name="jewelleryExceeds" value="yes">
+                            <label for="jewelleryExceedsYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="jewelleryExceedsNo" name="jewelleryExceeds" value="no">
+                            <label for="jewelleryExceedsNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="jewelleryValueGroup" style="display: none;">
+                    <label for="jewelleryValue">If yes, please state value ($):</label>
+                    <input type="number" id="jewelleryValue" name="jewelleryValue" step="0.01" min="0">
+                </div>
+            </div>
+
+            <!-- All Risks Section -->
+            <div class="section">
+                <h2 class="section-title">All Risks</h2>
+
+                <div class="note">
+                    <strong>NOTE 1:</strong> All Jewellery valued in excess of $5,000.00 must be accompanied by a
+                    valuation certificate.
+                </div>
+
+                <div class="note">
+                    <strong>NOTE 2:</strong> Spectacles, Sunglasses, Contact Lenses must be specifically itemised.
+                </div>
+
+                <div class="note">
+                    <strong>NOTE 3:</strong> Item 1 and 2 below only provide cover as defined, all other items to be
+                    listed.
+                </div>
+
+                <div class="definition-box">
+                    <h4>Item 1. Wearing Apparel</h4>
+                    <p>
+                        Clothing, Pens, Pencils, Briefcases, Handbags, Compacts, Cigarette Cases, Lighters, Electric
+                        Razors,
+                        Pocket Calculators and other items normally carried on or about the person, including Trunks,
+                        Bags and
+                        other Receptacles in which the property is contained whilst travelling. <strong>(Limit $3,000
+                            any one item)</strong>
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        <strong>Note:</strong> This item does not include Spectacles, Contact Lenses, Hearing Aids,
+                        Dentures,
+                        Jewellery, Personal Ornaments, Cameras, Radios, Electronic Equipment not specified above, Gold
+                        and Silver
+                        Articles, Watches, Money, Documents of any kind, Medals, Coins.
+                    </p>
+                </div>
+
+                <div class="definition-box">
+                    <h4>Item 2. Miscellaneous Jewellery</h4>
+                    <p>
+                        Jewellery, Personal Ornaments, Gold and Silver Articles, Watches. <strong>(Limit $3,000 any one
+                            item)</strong>
+                    </p>
+                </div>
+
+                <table class="all-risks-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th>Sum Insured ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Wearing Apparel (as defined)</td>
+                            <td><input type="number" name="wearingApparelSum" step="0.01" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Miscellaneous Jewellery (as defined)</td>
+                            <td><input type="number" name="miscJewellerySum" step="0.01" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><input type="text" name="item3Description" placeholder="Enter description"></td>
+                            <td><input type="number" name="item3Sum" step="0.01" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><input type="text" name="item4Description" placeholder="Enter description"></td>
+                            <td><input type="number" name="item4Sum" step="0.01" min="0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Period of Insurance -->
+            <div class="section">
+                <h2 class="section-title">Period of Insurance</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="insuranceFrom">From *</label>
+                        <input type="date" id="insuranceFrom" name="insuranceFrom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="insuranceTo">To *</label>
+                        <input type="date" id="insuranceTo" name="insuranceTo" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Declaration Section -->
+            <div class="declaration-box">
+                <h3>Declaration</h3>
+                <p>
+                    I hereby declare that all the information provided is in all respects correct and that no material
+                    fact has been
+                    suppressed or withheld and that if such information has been provided on my behalf I agree that this
+                    declaration
+                    and the answers given shall be the basis of the contract between the Company and me. I further agree
+                    to accept
+                    the usual conditions prescribed by the Company and endorsed on their policy.
+                </p>
+
+                <div class="signature-grid">
+                    <div class="form-group">
+                        <label for="declarationDate">Date *</label>
+                        <input type="date" id="declarationDate" name="declarationDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signature">Signature *</label>
+                        <div class="signature-container">
+                            <canvas id="signatureCanvas" class="signature-canvas" width="600" height="200"></canvas>
+                            <input type="hidden" id="signature" name="signature" required>
+                            <div class="signature-controls">
+                                <div style="display: flex; gap: 10px;">
+                                    <button type="button" class="signature-btn" id="clearBtn">Clear</button>
+                                    <label class="signature-btn">
+                                        Upload Image
+                                        <input type="file" id="signatureUpload" accept="image/*" style="display: none;">
+                                    </label>
+                                </div>
+                                <span style="font-size: 11px; color: #888;">Sign above or upload</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="agency">Agency</label>
+                        <input type="text" id="agency" name="agency">
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Submit Proposal</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Conditional field display logic
+        document.querySelectorAll('input[name="soleOccupants"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('occupantsDetailsGroup').style.display =
+                    this.value === 'no' ? 'block' : 'none';
+            });
+        });
+
+        // Construction other field
+        document.querySelectorAll('input[name="walls"], input[name="roof"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const wallOther = document.getElementById('wallOther').checked;
+                const roofOther = document.getElementById('roofOther').checked;
+                document.getElementById('constructionOtherGroup').style.display =
+                    (wallOther || roofOther) ? 'block' : 'none';
+            });
+        });
+
+        // Alarm details
+        document.querySelectorAll('input[name="hasAlarm"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('alarmDetails').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Reaction team name
+        document.querySelectorAll('input[name="reactionTeam"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('reactionTeamNameGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Unoccupied days
+        document.querySelectorAll('input[name="unoccupied"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('unoccupiedDaysGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Insurance declined details
+        document.querySelectorAll('input[name="insuranceDeclined"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('declinedDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Jewellery value
+        document.querySelectorAll('input[name="jewelleryExceeds"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('jewelleryValueGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Set current date as default for declaration date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('declarationDate').value = today;
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const signatureInput = document.getElementById('signature');
+        const clearBtn = document.getElementById('clearBtn');
+        const signatureUpload = document.getElementById('signatureUpload');
+
+        let isDrawing = false;
+        let ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#2c3e50';
+
+            const startDrawing = (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+
+            const draw = (e) => {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            };
+
+            const stopDrawing = () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveSignature();
+                }
+            };
+
+            const saveSignature = () => {
+                signatureInput.value = canvas.toDataURL();
+            };
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = '';
+            });
+
+            signatureUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            saveSignature();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('insuranceForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting…';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('http://localhost:3001/api/domestic-proposal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ Domestic Insurance proposal submitted successfully!\n\nReference Number: ${result.referenceNumber}\n\nAlliance Insurance Company will review your application and contact you shortly.`);
+                    this.reset();
+                } else {
+                    alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                console.error('Submission error:', err);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

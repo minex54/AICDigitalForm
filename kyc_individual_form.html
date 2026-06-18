@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Details - Individuals - Alliance Insurance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #405C75;
+            --primary-dark: #2c3e50;
+            --burgundy: #8B2332;
+            --burgundy-dark: #6d1b27;
+            --accent: #a53d4d;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #d4c5b9;
+            --shadow: rgba(74, 95, 127, 0.08);
+            --success: #2d7a4f;
+            --warning: #d97706;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #f5f1eb 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 4px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-home-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        .logo-sub {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        .notice {
+            background: linear-gradient(to right, #f0f4f8, #fefeff);
+            border-left: 4px solid var(--burgundy);
+            padding: 1.25rem 2rem;
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--burgundy);
+            margin-left: 0.25rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 0 3px rgba(139, 58, 82, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.75rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .radio-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-item label {
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .radio-item label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .radio-item input[type="radio"]:checked+label::before {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+        }
+
+        .radio-item input[type="radio"]:checked+label::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .card {
+            background: var(--bg-cream);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .note {
+            background: #f0f4f8;
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note strong {
+            color: var(--text-dark);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(74, 95, 127, 0.05) 0%, rgba(139, 58, 82, 0.05) 100%);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .conditional-field {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--burgundy);
+        }
+
+        .submit-container {
+            margin-top: 3rem;
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a5f7f 0%, #8b3a52 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 58, 82, 0.3);
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 58, 82, 0.4);
+            background: linear-gradient(135deg, #3d4f67 0%, #6d2d40 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .save-draft-btn {
+            background: var(--bg-white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .save-draft-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row-2,
+            .form-row-3,
+            .form-row-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .submit-container {
+                flex-direction: column;
+            }
+
+            .submit-btn,
+            .save-draft-btn {
+                width: 100%;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Signature Canvas Styles */
+        .signature-canvas {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            touch-action: none;
+        }
+
+        .signature-canvas:hover {
+            border-color: var(--burgundy);
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .signature-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signature-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <div class="logo-container">
+                <img src="./logo.jpg" alt="Alliance Insurance" class="logo-img">
+            </div>
+            <a href="index.html" class="back-home-btn">
+                <span>←</span>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="header">
+            <h1>KYC Details - Individuals</h1>
+            <p class="subtitle">Know Your Customer Information Form</p>
+        </div>
+
+        <div class="notice">
+            Please complete all sections accurately. This information is required for regulatory compliance and to
+            ensure the security of your account.
+        </div>
+
+        <form class="form-content" id="kycForm">
+            <!-- Section 1: Personal Information -->
+            <div class="section" data-section="1">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2 class="section-title">Personal Information</h2>
+                </div>
+
+                <div class="form-row-4">
+                    <div class="form-group">
+                        <label for="title">Title <span class="required">*</span></label>
+                        <select id="title" name="title" required>
+                            <option value="">Select</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Prof">Prof</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="middleName">Middle Name(s)</label>
+                        <input type="text" id="middleName" name="middleName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="maidenName">Maiden Name (Where applicable)</label>
+                    <input type="text" id="maidenName" name="maidenName">
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="placeOfBirth">Place of Birth <span class="required">*</span></label>
+                        <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="City, Country" required>
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-say">Prefer not to say</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nationality">Nationality <span class="required">*</span></label>
+                        <input type="text" id="nationality" name="nationality" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryOfResidence">Country of Residence <span class="required">*</span></label>
+                        <input type="text" id="countryOfResidence" name="countryOfResidence" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="idNumber">ID Number <span class="required">*</span></label>
+                    <input type="text" id="idNumber" name="idNumber" required>
+                </div>
+            </div>
+
+            <!-- Section 2: Contact Information -->
+            <div class="section" data-section="2">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h2 class="section-title">Contact Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="physicalAddress">Physical Address (including town/city) <span
+                            class="required">*</span></label>
+                    <textarea id="physicalAddress" name="physicalAddress" required></textarea>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number <span class="required">*</span></label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address <span class="required">*</span></label>
+                        <input type="email" id="emailAddress" name="emailAddress" required>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="nextOfKinName">Next of Kin <span class="required">*</span></label>
+                        <input type="text" id="nextOfKinName" name="nextOfKinName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nextOfKinContact">Next of Kin Contact Number <span class="required">*</span></label>
+                        <input type="tel" id="nextOfKinContact" name="nextOfKinContact" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Employment Information -->
+            <div class="section" data-section="3">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h2 class="section-title">Employment Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label>Employment Status <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="salaried" name="employmentStatus" value="salaried" required>
+                            <label for="salaried">Salaried</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="selfEmployed" name="employmentStatus" value="selfEmployed">
+                            <label for="selfEmployed">Self-employed</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="unemployed" name="employmentStatus" value="unemployed">
+                            <label for="unemployed">Unemployed</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="retired" name="employmentStatus" value="retired">
+                            <label for="retired">Retired</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="employmentDetailsSection">
+                    <div class="form-group">
+                        <label for="employerName">Name and Address of Employer <span class="required">*</span></label>
+                        <textarea id="employerName" name="employerName" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="occupation">Occupation <span class="required">*</span></label>
+                            <input type="text" id="occupation" name="occupation">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="annualIncome">Estimated Gross Annual Income ($) <span
+                                    class="required">*</span></label>
+                            <input type="number" id="annualIncome" name="annualIncome" step="0.01" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Political Exposure -->
+            <div class="section" data-section="4">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2 class="section-title">Political Exposure & PEP Status</h2>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">Politically Exposed Person (PEP) Declaration</div>
+                    <p>A PEP is an individual who holds or has held a prominent public position such as Ambassador,
+                        Minister, Member of Parliament, Senator, Permanent Secretary, Governor, or senior
+                        government/political party position.</p>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>Do you, in any capacity, hold a political or government position? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="pepYes" name="isPEP" value="yes" required>
+                                <label for="pepYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="pepNo" name="isPEP" value="no">
+                                <label for="pepNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conditional-field" id="pepDetailsSection" style="display: none;">
+                        <div class="form-group">
+                            <label for="pepPosition">Please specify position <span class="required">*</span></label>
+                            <input type="text" id="pepPosition" name="pepPosition"
+                                placeholder="e.g., Member of Parliament">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="incomeSource">Please advise the source of your income <span
+                                    class="required">*</span></label>
+                            <textarea id="incomeSource" name="incomeSource" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>Are you in any way closely linked (family or business) to any Political or Government
+                            official? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="linkedYes" name="linkedToPEP" value="yes" required>
+                                <label for="linkedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="linkedNo" name="linkedToPEP" value="no">
+                                <label for="linkedNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conditional-field" id="linkedDetailsSection" style="display: none;">
+                        <div class="form-group">
+                            <label for="linkedRelationship">Kindly specify nature of the relationship <span
+                                    class="required">*</span></label>
+                            <textarea id="linkedRelationship" name="linkedRelationship" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Business Interests -->
+            <div class="section" data-section="5">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h2 class="section-title">Business Interests & Shareholding</h2>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>Do you currently hold any shareholding or Directorship in a registered company or entity
+                            in Zimbabwe? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="shareholdingYes" name="hasShareholding" value="yes" required>
+                                <label for="shareholdingYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="shareholdingNo" name="hasShareholding" value="no">
+                                <label for="shareholdingNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conditional-field" id="shareholdingDetailsSection" style="display: none;">
+                        <div class="form-group">
+                            <label for="companyDetails">Kindly provide name of company or companies and shareholding
+                                <span class="required">*</span></label>
+                            <textarea id="companyDetails" name="companyDetails" rows="4"
+                                placeholder="Company Name, Shareholding %, Position (if applicable)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Lifestyle & Banking -->
+            <div class="section" data-section="6">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2 class="section-title">Lifestyle & Banking Details</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="lifestyle">Lifestyle: What is your favorite sport or hobby?</label>
+                    <input type="text" id="lifestyle" name="lifestyle" placeholder="e.g., Golf, Reading, Swimming">
+                </div>
+
+                <div class="note">
+                    <strong>Banking Details:</strong> Please provide your primary banking information
+                </div>
+
+                <div class="form-group">
+                    <label for="accountName">Account Name <span class="required">*</span></label>
+                    <input type="text" id="accountName" name="accountName" required>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="bankName">Bank <span class="required">*</span></label>
+                        <input type="text" id="bankName" name="bankName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number <span class="required">*</span></label>
+                        <input type="text" id="accountNumber" name="accountNumber" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Declaration -->
+            <div class="section" data-section="7">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h2 class="section-title">Declaration</h2>
+                </div>
+
+                <div class="info-box">
+                    <p style="line-height: 1.8;">
+                        I hereby declare that the information provided in this KYC form is true, accurate, and complete
+                        to the best of my knowledge. I understand that any false or misleading information may result in
+                        the rejection of my application or termination of services. I also consent to Alliance Insurance
+                        Company verifying the information provided and conducting any necessary background checks in
+                        accordance with applicable laws and regulations.
+                    </p>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="signature">Signature <span class="required">*</span></label>
+                        <div class="signature-container">
+                            <canvas id="signatureCanvas" class="signature-canvas" width="600" height="200"></canvas>
+                            <input type="hidden" id="signature" name="signature" required>
+                            <div class="signature-controls">
+                                <div style="display: flex; gap: 10px;">
+                                    <button type="button" class="signature-btn" id="clearBtn">Clear</button>
+                                    <label class="signature-btn">
+                                        Upload Image
+                                        <input type="file" id="signatureUpload" accept="image/*" style="display: none;">
+                                    </label>
+                                </div>
+                                <span style="font-size: 11px; color: #888;">Sign above or upload</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="declarationDate">Date <span class="required">*</span></label>
+                        <input type="date" id="declarationDate" name="declarationDate" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="button" class="save-draft-btn">Save as Draft</button>
+                <button type="submit" class="submit-btn">Submit KYC Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Progress bar
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const totalSections = sections.length;
+            let completedSections = 0;
+
+            sections.forEach(section => {
+                const inputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+                let allFilled = true;
+
+                inputs.forEach(input => {
+                    // Skip hidden fields
+                    if (input.offsetParent === null) return;
+
+                    if (input.type === 'radio') {
+                        const name = input.name;
+                        const checked = section.querySelector(`input[name="${name}"]:checked`);
+                        if (!checked && input.hasAttribute('required')) {
+                            allFilled = false;
+                        }
+                    } else if (!input.value) {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) completedSections++;
+            });
+
+            const progress = (completedSections / totalSections) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Employment status conditional fields
+        document.querySelectorAll('input[name="employmentStatus"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const employmentSection = document.getElementById('employmentDetailsSection');
+                if (this.value === 'unemployed' || this.value === 'retired') {
+                    employmentSection.style.display = 'none';
+                    // Remove required attribute
+                    employmentSection.querySelectorAll('[required]').forEach(input => {
+                        input.removeAttribute('required');
+                    });
+                } else {
+                    employmentSection.style.display = 'block';
+                    // Add required attribute back
+                    document.getElementById('employerName').setAttribute('required', 'required');
+                    document.getElementById('occupation').setAttribute('required', 'required');
+                    document.getElementById('annualIncome').setAttribute('required', 'required');
+                }
+                updateProgress();
+            });
+        });
+
+        // PEP status conditional fields
+        document.querySelectorAll('input[name="isPEP"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const pepSection = document.getElementById('pepDetailsSection');
+                if (this.value === 'yes') {
+                    pepSection.style.display = 'block';
+                    document.getElementById('pepPosition').setAttribute('required', 'required');
+                    document.getElementById('incomeSource').setAttribute('required', 'required');
+                } else {
+                    pepSection.style.display = 'none';
+                    document.getElementById('pepPosition').removeAttribute('required');
+                    document.getElementById('incomeSource').removeAttribute('required');
+                }
+                updateProgress();
+            });
+        });
+
+        // Linked to PEP conditional fields
+        document.querySelectorAll('input[name="linkedToPEP"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const linkedSection = document.getElementById('linkedDetailsSection');
+                if (this.value === 'yes') {
+                    linkedSection.style.display = 'block';
+                    document.getElementById('linkedRelationship').setAttribute('required', 'required');
+                } else {
+                    linkedSection.style.display = 'none';
+                    document.getElementById('linkedRelationship').removeAttribute('required');
+                }
+                updateProgress();
+            });
+        });
+
+        // Shareholding conditional fields
+        document.querySelectorAll('input[name="hasShareholding"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const shareholdingSection = document.getElementById('shareholdingDetailsSection');
+                if (this.value === 'yes') {
+                    shareholdingSection.style.display = 'block';
+                    document.getElementById('companyDetails').setAttribute('required', 'required');
+                } else {
+                    shareholdingSection.style.display = 'none';
+                    document.getElementById('companyDetails').removeAttribute('required');
+                }
+                updateProgress();
+            });
+        });
+
+        // Set current date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('declarationDate').value = today;
+
+        // Monitor all inputs for progress
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('change', updateProgress);
+            element.addEventListener('input', updateProgress);
+        });
+
+        // Initial progress calculation
+        updateProgress();
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const signatureInput = document.getElementById('signature');
+        const clearBtn = document.getElementById('clearBtn');
+        const signatureUpload = document.getElementById('signatureUpload');
+
+        let isDrawing = false;
+        let ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#2c3e50';
+
+            const startDrawing = (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+
+            const draw = (e) => {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            };
+
+            const stopDrawing = () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveSignature();
+                }
+            };
+
+            const saveSignature = () => {
+                signatureInput.value = canvas.toDataURL();
+                updateProgress();
+            };
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = '';
+                updateProgress();
+            });
+
+            signatureUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            saveSignature();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('kycForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting…';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('http://localhost:3001/api/kyc-individual', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ KYC Individual form submitted successfully!\n\nReference Number: ${result.referenceNumber}\n\nAlliance Insurance Company will review your details and contact you if additional information is required.`);
+                    this.reset();
+                } else {
+                    alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                console.error('Submission error:', err);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Save draft
+        document.querySelector('.save-draft-btn').addEventListener('click', function () {
+            const formData = new FormData(document.getElementById('kycForm'));
+            const data = Object.fromEntries(formData);
+
+            localStorage.setItem('kycDraft', JSON.stringify(data));
+            alert('Draft saved successfully! You can continue later.');
+        });
+
+        // Load draft on page load
+        window.addEventListener('load', function () {
+            const draft = localStorage.getItem('kycDraft');
+            if (draft && confirm('Would you like to load your saved draft?')) {
+                const data = JSON.parse(draft);
+                Object.keys(data).forEach(key => {
+                    const element = document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'radio') {
+                            const radio = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+                            if (radio) {
+                                radio.checked = true;
+                                radio.dispatchEvent(new Event('change'));
+                            }
+                        } else {
+                            element.value = data[key];
+                        }
+                    }
+                });
+                updateProgress();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Insurance Proposal Form - Alliance Insurance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #405C75;
+            --primary-dark: #2c3e50;
+            --burgundy: #8B2332;
+            --burgundy-dark: #6d1b27;
+            --accent: #a53d4d;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #d4c5b9;
+            --shadow: rgba(74, 95, 127, 0.08);
+            --success: #2d7a4f;
+            --warning: #d97706;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #f5f1eb 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 4px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-home-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        .logo-sub {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .tabs {
+            display: flex;
+            background: var(--bg-cream);
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-medium);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            background: rgba(139, 58, 82, 0.05);
+        }
+
+        .tab.active {
+            background: white;
+            color: var(--burgundy);
+            border-bottom-color: var(--burgundy);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--burgundy);
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--burgundy);
+            margin-left: 0.25rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 0 3px rgba(139, 58, 82, 0.1);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .travelers-table {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1.5px solid var(--border);
+        }
+
+        .travelers-table th,
+        .travelers-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .travelers-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .travelers-table td {
+            background: var(--bg-white);
+            padding: 0.5rem;
+        }
+
+        .travelers-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .travelers-table input[type="text"],
+        .travelers-table input[type="number"] {
+            width: 100%;
+            padding: 0.625rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .travelers-table .row-number {
+            width: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+
+        .add-traveler-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .add-traveler-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .note {
+            background: #f0f4f8;
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .cover-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cover-option {
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .cover-option:hover {
+            border-color: var(--burgundy);
+            background: rgba(139, 58, 82, 0.05);
+        }
+
+        .cover-option input[type="radio"] {
+            display: none;
+        }
+
+        .cover-option.selected {
+            border-color: var(--burgundy);
+            background: rgba(139, 58, 82, 0.1);
+        }
+
+        .cover-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .cover-area {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .benefits-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .benefits-table thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+        }
+
+        .benefits-table th,
+        .benefits-table td {
+            padding: 0.75rem 0.5rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        .benefits-table th {
+            font-weight: 600;
+            font-size: 0.8rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .benefits-table tbody tr:nth-child(even) {
+            background: var(--bg-cream);
+        }
+
+        .benefits-table tbody tr:hover {
+            background: rgba(139, 58, 82, 0.05);
+        }
+
+        .section-header-table {
+            background: var(--primary) !important;
+            color: white !important;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .submit-container {
+            margin-top: 3rem;
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a5f7f 0%, #8b3a52 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 58, 82, 0.3);
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 58, 82, 0.4);
+            background: linear-gradient(135deg, #3d4f67 0%, #6d2d40 100%);
+        }
+
+        .footer-info {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1024px) {
+            .benefits-table {
+                font-size: 0.75rem;
+            }
+
+            .benefits-table th,
+            .benefits-table td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row-2,
+            .form-row-3,
+            .form-row-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .cover-options {
+                grid-template-columns: 1fr;
+            }
+
+            .submit-container {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+
+            .benefits-table {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Signature Canvas Styles */
+        .signature-canvas {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            touch-action: none;
+        }
+
+        .signature-canvas:hover {
+            border-color: var(--primary);
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .signature-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signature-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <div class="logo-container">
+                <img src="./logo.jpg" alt="Alliance Insurance" class="logo-img">
+            </div>
+            <a href="index.html" class="back-home-btn">
+                <span>←</span>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <div class="header">
+            <h1>Travel Insurance Application</h1>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(0)">Application Form</div>
+            <div class="tab" onclick="switchTab(1)">Coverage Benefits</div>
+        </div>
+
+        <!-- Tab 1: Application Form -->
+        <div class="tab-content active" id="tab1">
+            <form class="form-content" id="travelForm">
+                <!-- Policy Holder Information -->
+                <div class="section">
+                    <h2 class="section-title">Policy Holder Information</h2>
+
+                    <div class="form-group">
+                        <label for="surname">Surname (or Company Name) <span class="required">*</span></label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstNames">First Names <span class="required">*</span></label>
+                        <input type="text" id="firstNames" name="firstNames" required>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passportNo">Passport No. <span class="required">*</span></label>
+                            <input type="text" id="passportNo" name="passportNo" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address <span class="required">*</span></label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tel">Tel <span class="required">*</span></label>
+                            <input type="tel" id="tel" name="tel" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fax">Fax</label>
+                            <input type="tel" id="fax" name="fax">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination">Destination <span class="required">*</span></label>
+                        <input type="text" id="destination" name="destination"
+                            placeholder="e.g., London, United Kingdom" required>
+                    </div>
+                </div>
+
+                <!-- List of Insured -->
+                <div class="section">
+                    <h2 class="section-title">List of Insured</h2>
+
+                    <div class="note">
+                        <strong>Note:</strong> For more than 5 travelers, please attach a separate list
+                    </div>
+
+                    <table class="travelers-table" id="travelersTable">
+                        <thead>
+                            <tr>
+                                <th class="row-number">No.</th>
+                                <th>Surname</th>
+                                <th>First Names</th>
+                                <th>Age</th>
+                                <th>Passport No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="row-number">1</td>
+                                <td><input type="text" name="travelerSurname1" required></td>
+                                <td><input type="text" name="travelerFirstName1" required></td>
+                                <td><input type="number" name="travelerAge1" min="0" max="120" required></td>
+                                <td><input type="text" name="travelerPassport1" required></td>
+                            </tr>
+                            <tr>
+                                <td class="row-number">2</td>
+                                <td><input type="text" name="travelerSurname2"></td>
+                                <td><input type="text" name="travelerFirstName2"></td>
+                                <td><input type="number" name="travelerAge2" min="0" max="120"></td>
+                                <td><input type="text" name="travelerPassport2"></td>
+                            </tr>
+                            <tr>
+                                <td class="row-number">3</td>
+                                <td><input type="text" name="travelerSurname3"></td>
+                                <td><input type="text" name="travelerFirstName3"></td>
+                                <td><input type="number" name="travelerAge3" min="0" max="120"></td>
+                                <td><input type="text" name="travelerPassport3"></td>
+                            </tr>
+                            <tr>
+                                <td class="row-number">4</td>
+                                <td><input type="text" name="travelerSurname4"></td>
+                                <td><input type="text" name="travelerFirstName4"></td>
+                                <td><input type="number" name="travelerAge4" min="0" max="120"></td>
+                                <td><input type="text" name="travelerPassport4"></td>
+                            </tr>
+                            <tr>
+                                <td class="row-number">5</td>
+                                <td><input type="text" name="travelerSurname5"></td>
+                                <td><input type="text" name="travelerFirstName5"></td>
+                                <td><input type="number" name="travelerAge5" min="0" max="120"></td>
+                                <td><input type="text" name="travelerPassport5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Cover Details -->
+                <div class="section">
+                    <h2 class="section-title">Cover Details</h2>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="startDate">Start Date <span class="required">*</span></label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endDate">End Date <span class="required">*</span></label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Level of Cover <span class="required">*</span></label>
+                        <div class="cover-options">
+                            <div class="cover-option" onclick="selectCover(this, 'area1')">
+                                <input type="radio" id="area1" name="levelOfCover" value="area1" required>
+                                <label class="cover-label" for="area1">Area 1</label>
+                                <span class="cover-area">Zimbabwe</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'area2')">
+                                <input type="radio" id="area2" name="levelOfCover" value="area2">
+                                <label class="cover-label" for="area2">Area 2</label>
+                                <span class="cover-area">Africa</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'area3')">
+                                <input type="radio" id="area3" name="levelOfCover" value="area3">
+                                <label class="cover-label" for="area3">Area 3</label>
+                                <span class="cover-area">Europe</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'area4')">
+                                <input type="radio" id="area4" name="levelOfCover" value="area4">
+                                <label class="cover-label" for="area4">Area 4</label>
+                                <span class="cover-area">Schengen</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'area5')">
+                                <input type="radio" id="area5" name="levelOfCover" value="area5">
+                                <label class="cover-label" for="area5">Area 5</label>
+                                <span class="cover-area">Worldwide Standard</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'area6')">
+                                <input type="radio" id="area6" name="levelOfCover" value="area6">
+                                <label class="cover-label" for="area6">Area 6</label>
+                                <span class="cover-area">Worldwide Premier</span>
+                            </div>
+                            <div class="cover-option" onclick="selectCover(this, 'student')">
+                                <input type="radio" id="student" name="levelOfCover" value="student">
+                                <label class="cover-label" for="student">Student</label>
+                                <span class="cover-area">Worldwide Student Cover</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="typeOfTrip">Type of Trip <span class="required">*</span></label>
+                        <select id="typeOfTrip" name="typeOfTrip" required>
+                            <option value="">Select trip type</option>
+                            <option value="single">Single Trip</option>
+                            <option value="annual">Annual Multi-Trip</option>
+                            <option value="business">Business Travel</option>
+                            <option value="leisure">Leisure Travel</option>
+                            <option value="study">Study Abroad</option>
+                            <option value="family">Family Vacation</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Next of Kin Details -->
+                <div class="section">
+                    <h2 class="section-title">Next of Kin Details</h2>
+
+                    <div class="form-group">
+                        <label for="nextOfKinName">Next of Kin Name <span class="required">*</span></label>
+                        <input type="text" id="nextOfKinName" name="nextOfKinName" required>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="nextOfKinDialCode">Next of Kin Country Dial Code <span
+                                    class="required">*</span></label>
+                            <input type="text" id="nextOfKinDialCode" name="nextOfKinDialCode" placeholder="e.g., +263"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nextOfKinPhone">Next of Kin Phone No. <span class="required">*</span></label>
+                            <input type="tel" id="nextOfKinPhone" name="nextOfKinPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nextOfKinRelation">Relationship to Next of Kin <span
+                                class="required">*</span></label>
+                        <select id="nextOfKinRelation" name="nextOfKinRelation" required>
+                            <option value="">Select relationship</option>
+                            <option value="spouse">Spouse</option>
+                            <option value="parent">Parent</option>
+                            <option value="child">Child</option>
+                            <option value="sibling">Sibling</option>
+                            <option value="friend">Friend</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="section">
+                    <h2 class="section-title">Declaration</h2>
+
+                    <div class="note">
+                        I hereby declare that the information provided in this form is true and accurate to the best of
+                        my knowledge. I understand that any false information may result in the cancellation of my
+                        policy or rejection of claims.
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="signature">Signature (Policy Holder) <span class="required">*</span></label>
+                            <div class="signature-container">
+                                <canvas id="signatureCanvas" class="signature-canvas" width="600" height="200"></canvas>
+                                <input type="hidden" id="signature" name="signature" required>
+                                <div class="signature-controls">
+                                    <div style="display: flex; gap: 10px;">
+                                        <button type="button" class="signature-btn" id="clearBtn">Clear</button>
+                                        <label class="signature-btn">
+                                            Upload Image
+                                            <input type="file" id="signatureUpload" accept="image/*"
+                                                style="display: none;">
+                                        </label>
+                                    </div>
+                                    <span style="font-size: 11px; color: #888;">Sign above or upload</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signatureDate">Date <span class="required">*</span></label>
+                            <input type="date" id="signatureDate" name="signatureDate" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">Submit Proposal</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Tab 2: Coverage Benefits -->
+        <div class="tab-content" id="tab2">
+            <div class="form-content">
+                <div class="section">
+                    <h2 class="section-title">Travel Insurance Benefits</h2>
+
+                    <div class="note">
+                        <strong>Coverage Comparison:</strong> Review the benefits available for each coverage area to
+                        make an informed decision.
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table class="benefits-table">
+                            <thead>
+                                <tr>
+                                    <th style="min-width: 250px;">Benefit</th>
+                                    <th>Zimbabwe<br>(Area 1)</th>
+                                    <th>Africa<br>(Area 2)</th>
+                                    <th>Europe<br>(Area 3)</th>
+                                    <th>Schengen<br>(Area 4)</th>
+                                    <th>Worldwide Standard<br>(Area 5)</th>
+                                    <th>Worldwide Premier<br>(Area 6)</th>
+                                    <th>Worldwide Student</th>
+                                    <th>Excess</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION A – Cancellation and Curtailment</td>
+                                </tr>
+                                <tr>
+                                    <td>Trip Cancellation</td>
+                                    <td>$750</td>
+                                    <td>$2,000</td>
+                                    <td>$5,000</td>
+                                    <td>N/A</td>
+                                    <td>$5,000</td>
+                                    <td>$7,500</td>
+                                    <td>$2,500</td>
+                                    <td>$100</td>
+                                </tr>
+                                <tr>
+                                    <td>Trip Curtailment</td>
+                                    <td>$750</td>
+                                    <td>$2,000</td>
+                                    <td>$5,000</td>
+                                    <td>N/A</td>
+                                    <td>$5,000</td>
+                                    <td>$7,500</td>
+                                    <td>$2,500</td>
+                                    <td>$125</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION B – Emergency Medical and Other Expenses</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Medical Expenses</td>
+                                    <td>$50,000</td>
+                                    <td>$150,000</td>
+                                    <td>$500,000</td>
+                                    <td>$100,000</td>
+                                    <td>$500,000</td>
+                                    <td>$1,000,000</td>
+                                    <td>$200,000</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Evacuation and repatriation of mortal remains or funeral expenses</td>
+                                    <td>$5,000</td>
+                                    <td>Actual Cost</td>
+                                    <td>Actual Cost</td>
+                                    <td>Actual Cost</td>
+                                    <td>Actual Cost</td>
+                                    <td>Actual Cost</td>
+                                    <td>Actual Cost</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Dental Treatment</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$2,000</td>
+                                    <td>$2,000</td>
+                                    <td>$2,000</td>
+                                    <td>$2,000</td>
+                                    <td>$500</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Hospital Cash Benefits</td>
+                                    <td>$25/24hrs<br>max $500</td>
+                                    <td>$25/24hrs<br>max $500</td>
+                                    <td>$50/24hrs<br>max $1,000</td>
+                                    <td>$25/24hrs<br>max $500</td>
+                                    <td>$50/24hrs<br>max $1,000</td>
+                                    <td>$50/24hrs<br>max $1,000</td>
+                                    <td>$50/24hrs<br>max $1,000</td>
+                                    <td>Nil</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION C – Personal Accident</td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Accident</td>
+                                    <td>$15,000</td>
+                                    <td>$25,000</td>
+                                    <td>$75,000</td>
+                                    <td>N/A</td>
+                                    <td>$100,000</td>
+                                    <td>$100,000</td>
+                                    <td>$100,000</td>
+                                    <td>$250</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION D – Baggage Loss</td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Baggage Loss or Damage</td>
+                                    <td>$750</td>
+                                    <td>$1,500</td>
+                                    <td>$2,500</td>
+                                    <td>N/A</td>
+                                    <td>$2,500</td>
+                                    <td>$5,000</td>
+                                    <td>$1,500</td>
+                                    <td>$100</td>
+                                </tr>
+                                <tr>
+                                    <td>Single Article Limit</td>
+                                    <td>25%</td>
+                                    <td>25%</td>
+                                    <td>25%</td>
+                                    <td>N/A</td>
+                                    <td>25%</td>
+                                    <td>25%</td>
+                                    <td>25%</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Baggage Delay</td>
+                                    <td>$150</td>
+                                    <td>$300</td>
+                                    <td>$500</td>
+                                    <td>N/A</td>
+                                    <td>$500</td>
+                                    <td>$750</td>
+                                    <td>$500</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Loss of Personal Money</td>
+                                    <td>N/A</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>N/A</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Loss of Passport and Document</td>
+                                    <td>N/A</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>N/A</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>Nil</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION E – Travel Inconvenience</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel and Flight Delay</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>N/A</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>$250</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Missed Departure</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>N/A</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Missed Travel Connection</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>N/A</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>$500</td>
+                                    <td>Nil</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION F – Personal Liability</td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Liability</td>
+                                    <td>$25,000</td>
+                                    <td>$25,000</td>
+                                    <td>$500,000</td>
+                                    <td>N/A</td>
+                                    <td>$500,000</td>
+                                    <td>$1,000,000</td>
+                                    <td>$100,000</td>
+                                    <td>$250</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION G – Legal Expenses</td>
+                                </tr>
+                                <tr>
+                                    <td>Legal Expenses</td>
+                                    <td>$2,500</td>
+                                    <td>$10,000</td>
+                                    <td>$25,000</td>
+                                    <td>N/A</td>
+                                    <td>$25,000</td>
+                                    <td>$50,000</td>
+                                    <td>$15,000</td>
+                                    <td>$125</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION H – Hijack, Hostage, Wrongful Detention</td>
+                                </tr>
+                                <tr>
+                                    <td>Hijack, Hostage, Wrongful Detention</td>
+                                    <td>N/A</td>
+                                    <td>$5,000</td>
+                                    <td>$5,000</td>
+                                    <td>$5,000</td>
+                                    <td>$5,000</td>
+                                    <td>$5,000</td>
+                                    <td>N/A</td>
+                                    <td>Nil</td>
+                                </tr>
+                                <tr>
+                                    <td>Hijack, Hostage, Wrongful Detention Per Day</td>
+                                    <td>N/A</td>
+                                    <td>$100</td>
+                                    <td>$100</td>
+                                    <td>$100</td>
+                                    <td>$100</td>
+                                    <td>$100</td>
+                                    <td>N/A</td>
+                                    <td>Nil</td>
+                                </tr>
+
+                                <tr class="section-header-table">
+                                    <td colspan="9">SECTION I – Reimbursement of University/College Fees</td>
+                                </tr>
+                                <tr>
+                                    <td>Reimbursement of University/College Fees</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>$5,000</td>
+                                    <td>$100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            Alliance Insurance Company, 66 Ridgeway North, Borrowdale, Harare, Zimbabwe<br>
+            Tel: +263 242 882060 | Email: <a href="mailto:queries@aic.co.zw">queries@aic.co.zw</a> | Web: <a
+                href="http://www.aic.co.zw" target="_blank">www.aic.co.zw</a>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function switchTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                    contents[index].classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                    contents[index].classList.remove('active');
+                }
+            });
+        }
+
+        // Cover selection
+        function selectCover(element, coverId) {
+            document.querySelectorAll('.cover-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            document.getElementById(coverId).checked = true;
+        }
+
+        // Set current date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('signatureDate').value = today;
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const signatureInput = document.getElementById('signature');
+        const clearBtn = document.getElementById('clearBtn');
+        const signatureUpload = document.getElementById('signatureUpload');
+
+        let isDrawing = false;
+        let ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#2c3e50';
+
+            const startDrawing = (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+
+            const draw = (e) => {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            };
+
+            const stopDrawing = () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveSignature();
+                }
+            };
+
+            const saveSignature = () => {
+                signatureInput.value = canvas.toDataURL();
+            };
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = '';
+            });
+
+            signatureUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            saveSignature();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('travelForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting…';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('http://localhost:3001/api/travel-insurance', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ Travel Insurance application submitted successfully!\n\nReference Number: ${result.referenceNumber}\n\nAlliance Insurance Company will review your application and contact you shortly.`);
+                    this.reset();
+                } else {
+                    alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                console.error('Submission error:', err);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Date validation - end date must be after start date
+        document.getElementById('endDate').addEventListener('change', function () {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = this.value;
+
+            if (startDate && endDate && endDate <= startDate) {
+                alert('End date must be after start date');
+                this.value = '';
+            }
+        });
+
+        document.getElementById('startDate').addEventListener('change', function () {
+            const startDate = this.value;
+            const endDate = document.getElementById('endDate').value;
+
+            if (startDate && endDate && endDate <= startDate) {
+                document.getElementById('endDate').value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Vehicle Insurance Proposal - Alliance Insurance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #405C75;
+            --primary-dark: #2c3e50;
+            --burgundy: #8B2332;
+            --burgundy-dark: #6d1b27;
+            --accent: #a53d4d;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #d4c5b9;
+            --shadow: rgba(74, 95, 127, 0.08);
+            --shadow-hover: rgba(74, 95, 127, 0.15);
+            --success: #2d7a4f;
+            --warning: #d97706;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #f5f1eb 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 2px;
+            box-shadow: 0 20px 60px var(--shadow);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-home-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: white;
+        }
+
+        .logo-sub {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .notice {
+            background: linear-gradient(to right, #f0f4f8, #fefeff);
+            border-left: 4px solid var(--burgundy);
+            padding: 1.25rem 2rem;
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .instruction {
+            background: var(--bg-cream);
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--burgundy) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease-out backwards;
+            border-left: 3px solid transparent;
+            padding-left: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .section.active {
+            border-left-color: var(--burgundy);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: var(--burgundy);
+            margin-left: 0.25rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group input[type="date"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 0 3px rgba(139, 58, 82, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-row-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label,
+        .radio-item label {
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .checkbox-item label::before,
+        .radio-item label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item label::before {
+            border-radius: 2px;
+        }
+
+        .radio-item label::before {
+            border-radius: 50%;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::before,
+        .radio-item input[type="radio"]:checked+label::before {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked+label::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .radio-item input[type="radio"]:checked+label::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .card {
+            background: var(--bg-cream);
+            border: 1.5px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .drivers-table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1.5px solid var(--border);
+        }
+
+        .drivers-table th,
+        .drivers-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drivers-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .drivers-table td {
+            background: var(--bg-white);
+            padding: 0.5rem;
+        }
+
+        .drivers-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .drivers-table input[type="text"] {
+            width: 100%;
+            padding: 0.625rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .add-driver-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .add-driver-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .vehicle-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: var(--bg-cream);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .cover-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cover-option {
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .cover-option:hover {
+            border-color: var(--burgundy);
+            background: rgba(139, 58, 82, 0.05);
+        }
+
+        .cover-option input[type="radio"] {
+            display: none;
+        }
+
+        .cover-option input[type="radio"]:checked+.cover-label {
+            color: var(--burgundy);
+        }
+
+        .cover-option.selected {
+            border-color: var(--burgundy);
+            background: rgba(139, 58, 82, 0.1);
+        }
+
+        .cover-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+
+        .office-section {
+            background: linear-gradient(135deg, #f9f9f9 0%, var(--bg-cream) 100%);
+            border: 2px solid var(--burgundy);
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 4px;
+        }
+
+        .office-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .inspection-diagram {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .vehicle-diagram {
+            width: 100%;
+            height: auto;
+            opacity: 0.7;
+        }
+
+        .submit-container {
+            margin-top: 3rem;
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a5f7f 0%, #8b3a52 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 58, 82, 0.3);
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 58, 82, 0.4);
+            background: linear-gradient(135deg, #3d4f67 0%, #6d2d40 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .save-draft-btn {
+            background: var(--bg-white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .save-draft-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 4px;
+            background: var(--bg-cream);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--burgundy);
+            background: rgba(139, 58, 82, 0.05);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .note {
+            background: #f0f4f8;
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note strong {
+            color: var(--text-dark);
+        }
+
+        .warning-box {
+            background: #fff9e6;
+            border-left: 3px solid var(--warning);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-radius: 0 4px 4px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row-2,
+            .form-row-3,
+            .form-row-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .cover-options {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .submit-container {
+                flex-direction: column;
+            }
+
+            .submit-btn,
+            .save-draft-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Signature Canvas Styles */
+        .signature-canvas {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            touch-action: none;
+        }
+
+        .signature-canvas:hover {
+            border-color: var(--primary);
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .signature-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signature-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <div class="logo-container">
+                <img src="./logo.jpg" alt="Alliance Insurance" class="logo-img">
+            </div>
+            <a href="index.html" class="back-home-btn">
+                <span>←</span>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="header">
+            <h1>Proposal for Vehicle Insurance</h1>
+        </div>
+
+        <div class="notice">
+            NO COVER IS IN FORCE UNTIL THE COMPANY HAS ACCEPTED THE PROPOSAL
+        </div>
+
+        <div class="instruction">
+            All questions must be answered fully. Dashes are not sufficient. Please use BLOCK LETTERS.
+            (Where questions require a "Yes" or "No" answer, tick that which is applicable)
+        </div>
+
+        <form class="form-content" id="motorForm">
+            <!-- Section 1: Personal Information -->
+            <div class="section" data-section="1">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2 class="section-title">Personal Information</h2>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Proposer's Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="poBox">P O Box</label>
+                        <input type="text" id="poBox" name="poBox">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occupation">Occupation <span class="required">*</span></label>
+                        <input type="text" id="occupation" name="occupation" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="physicalAddress">Physical Address <span class="required">*</span></label>
+                    <textarea id="physicalAddress" name="physicalAddress" required></textarea>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="phoneHome">Telephone Number (Home)</label>
+                        <input type="tel" id="phoneHome" name="phoneHome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneWork">Telephone Number (Work)</label>
+                        <input type="tel" id="phoneWork" name="phoneWork">
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="fax">Fax</label>
+                        <input type="tel" id="fax" name="fax">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cellNumber">Cell. No <span class="required">*</span></label>
+                        <input type="tel" id="cellNumber" name="cellNumber" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sportsPlayed">Sports Played</label>
+                    <input type="text" id="sportsPlayed" name="sportsPlayed">
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="insuranceFrom">Period of Insurance From <span class="required">*</span></label>
+                        <input type="date" id="insuranceFrom" name="insuranceFrom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="insuranceTo">Period of Insurance To <span class="required">*</span></label>
+                        <input type="date" id="insuranceTo" name="insuranceTo" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Additional Drivers -->
+            <div class="section" data-section="2">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h2 class="section-title">Additional Drivers</h2>
+                </div>
+
+                <p style="margin-bottom: 1rem; color: var(--text-medium);">
+                    Provide details of any other people who may drive your vehicle with your consent other than yourself
+                    and your spouse
+                </p>
+
+                <table class="drivers-table" id="driversTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Driver's License Number</th>
+                            <th>Relation to Insured</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="driverName1"></td>
+                            <td><input type="text" name="driverLicense1"></td>
+                            <td><input type="text" name="driverRelation1"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="driverName2"></td>
+                            <td><input type="text" name="driverLicense2"></td>
+                            <td><input type="text" name="driverRelation2"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="driverName3"></td>
+                            <td><input type="text" name="driverLicense3"></td>
+                            <td><input type="text" name="driverRelation3"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 3: Insurance History -->
+            <div class="section" data-section="3">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h2 class="section-title">Insurance History</h2>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>1. Have you been or are you currently insured in respect of any vehicle? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="currentlyInsuredYes" name="currentlyInsured" value="yes"
+                                    required>
+                                <label for="currentlyInsuredYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="currentlyInsuredNo" name="currentlyInsured" value="no">
+                                <label for="currentlyInsuredNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="presentInsurersGroup" style="display: none;">
+                        <label for="presentInsurers">Name of Present Insurers</label>
+                        <input type="text" id="presentInsurers" name="presentInsurers">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>2. Do you or any other person who to your knowledge will drive suffer from defective
+                            vision or hearing or from any physical infirmity or mental illness or are you or any other
+                            person who will drive over the age of 70 years? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="healthIssuesYes" name="healthIssues" value="yes" required>
+                                <label for="healthIssuesYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="healthIssuesNo" name="healthIssues" value="no">
+                                <label for="healthIssuesNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="healthDetailsGroup" style="display: none;">
+                        <label for="healthDetails">If "Yes", please give details and submit the relevant Medical
+                            Certificate</label>
+                        <textarea id="healthDetails" name="healthDetails"></textarea>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>3. Have you had any accidents or losses during the past 36 months (whether resulting in a
+                            claim or not) in connection with any vehicle owned or driven by you? Has any person who to
+                            your knowledge will drive been involved in any accident? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="accidentsYes" name="accidents" value="yes" required>
+                                <label for="accidentsYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="accidentsNo" name="accidents" value="no">
+                                <label for="accidentsNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="accidentDetailsGroup" style="display: none;">
+                        <label for="accidentDetails">If "Yes" please give details</label>
+                        <textarea id="accidentDetails" name="accidentDetails"></textarea>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">4. Have any Insurers verbally or otherwise in respect of the Proposer (and
+                        his/her spouse where the proposer is an individual or where the proposer is a partnership or a
+                        partner in a partnership or employee thereof or if a company its members or employees) who will
+                        drive the vehicle:</p>
+
+                    <div class="form-group">
+                        <label>(a) Declined any proposal? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="declinedYes" name="declined" value="yes" required>
+                                <label for="declinedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="declinedNo" name="declined" value="no">
+                                <label for="declinedNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>(b) Required you specially to carry a portion of any loss? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="carryLossYes" name="carryLoss" value="yes" required>
+                                <label for="carryLossYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="carryLossNo" name="carryLoss" value="no">
+                                <label for="carryLossNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>(c) Required increased premium or imposed special conditions? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="increasedPremiumYes" name="increasedPremium" value="yes"
+                                    required>
+                                <label for="increasedPremiumYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="increasedPremiumNo" name="increasedPremium" value="no">
+                                <label for="increasedPremiumNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>(d) Cancelled any policy? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="cancelledYes" name="cancelled" value="yes" required>
+                                <label for="cancelledYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="cancelledNo" name="cancelled" value="no">
+                                <label for="cancelledNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>(e) Refused to renew any policy? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="refusedRenewalYes" name="refusedRenewal" value="yes" required>
+                                <label for="refusedRenewalYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="refusedRenewalNo" name="refusedRenewal" value="no">
+                                <label for="refusedRenewalNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="insuranceIssuesReasonsGroup" style="display: none;">
+                        <label for="insuranceIssuesReasons">If "Yes" to any of the above, please give reasons</label>
+                        <textarea id="insuranceIssuesReasons" name="insuranceIssuesReasons"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Vehicle Details -->
+            <div class="section" data-section="4">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2 class="section-title">Vehicle Details</h2>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="registeredOwner">Name of Registered Owner <span class="required">*</span></label>
+                        <input type="text" id="registeredOwner" name="registeredOwner" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regNumber">Registration Number <span class="required">*</span></label>
+                        <input type="text" id="regNumber" name="regNumber" required>
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="make">Make <span class="required">*</span></label>
+                        <input type="text" id="make" name="make" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model">Model <span class="required">*</span></label>
+                        <input type="text" id="model" name="model" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bodyType">Type of Body <span class="required">*</span></label>
+                        <select id="bodyType" name="bodyType" required>
+                            <option value="">Select</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="pickup">Pickup</option>
+                            <option value="van">Van</option>
+                            <option value="coupe">Coupe</option>
+                            <option value="wagon">Wagon</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row-4">
+                    <div class="form-group">
+                        <label for="year">Year <span class="required">*</span></label>
+                        <input type="number" id="year" name="year" min="1900" max="2030" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="engineNumber">Engine No. <span class="required">*</span></label>
+                        <input type="text" id="engineNumber" name="engineNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chassisNumber">Chassis No. <span class="required">*</span></label>
+                        <input type="text" id="chassisNumber" name="chassisNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sumInsured">Sum Insured ($) <span class="required">*</span></label>
+                        <input type="number" id="sumInsured" name="sumInsured" step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="countryOfOrigin">Please state country of origin for the vehicle (e.g. ex Japan, ex
+                        British, etc)</label>
+                    <input type="text" id="countryOfOrigin" name="countryOfOrigin" placeholder="e.g., Japan, UK, USA">
+                </div>
+            </div>
+
+            <!-- Section 5: Cover Type -->
+            <div class="section" data-section="5">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h2 class="section-title">Cover Required</h2>
+                </div>
+
+                <div class="cover-options">
+                    <div class="cover-option" onclick="selectCover(this, 'comprehensive')">
+                        <input type="radio" id="comprehensive" name="coverType" value="comprehensive" required>
+                        <label class="cover-label" for="comprehensive">Comprehensive</label>
+                    </div>
+                    <div class="cover-option" onclick="selectCover(this, 'thirdPartyFireTheft')">
+                        <input type="radio" id="thirdPartyFireTheft" name="coverType" value="thirdPartyFireTheft">
+                        <label class="cover-label" for="thirdPartyFireTheft">Third Party Fire & Theft</label>
+                    </div>
+                    <div class="cover-option" onclick="selectCover(this, 'thirdPartyFireDamage')">
+                        <input type="radio" id="thirdPartyFireDamage" name="coverType" value="thirdPartyFireDamage">
+                        <label class="cover-label" for="thirdPartyFireDamage">Third Party Fire & Damage</label>
+                    </div>
+                    <div class="cover-option" onclick="selectCover(this, 'fullThirdParty')">
+                        <input type="radio" id="fullThirdParty" name="coverType" value="fullThirdParty">
+                        <label class="cover-label" for="fullThirdParty">Full Third Party</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Vehicle Usage -->
+            <div class="section" data-section="6">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2 class="section-title">Vehicle Usage</h2>
+                </div>
+
+                <p style="margin-bottom: 1.5rem; color: var(--text-medium);">Will the vehicle be used:</p>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>a. Solely for journeys between your home and permanent place of business/work without
+                            making business calls during such journeys and/or for social, domestic and pleasure
+                            purposes? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="usageHomeWorkYes" name="usageHomeWork" value="yes" required>
+                                <label for="usageHomeWorkYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="usageHomeWorkNo" name="usageHomeWork" value="no">
+                                <label for="usageHomeWorkNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>b. In connection with the motor trade? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="motorTradeYes" name="motorTrade" value="yes" required>
+                                <label for="motorTradeYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="motorTradeNo" name="motorTrade" value="no">
+                                <label for="motorTradeNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>c. In connection with any business or profession? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="businessYes" name="business" value="yes" required>
+                                <label for="businessYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="businessNo" name="business" value="no">
+                                <label for="businessNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>d. For the carriage of passengers (commuter omnibus/taxi) or goods for hire or reward?
+                            <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="hireRewardYes" name="hireReward" value="yes" required>
+                                <label for="hireRewardYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hireRewardNo" name="hireReward" value="no">
+                                <label for="hireRewardNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>e. For the purposes of sales or deliveries? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="salesDeliveriesYes" name="salesDeliveries" value="yes" required>
+                                <label for="salesDeliveriesYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="salesDeliveriesNo" name="salesDeliveries" value="no">
+                                <label for="salesDeliveriesNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>f. For the carriage of explosives or other hazardous goods? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="hazardousYes" name="hazardous" value="yes" required>
+                                <label for="hazardousYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hazardousNo" name="hazardous" value="no">
+                                <label for="hazardousNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>g. For any other purpose not mentioned above? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="otherPurposeYes" name="otherPurpose" value="yes" required>
+                                <label for="otherPurposeYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="otherPurposeNo" name="otherPurpose" value="no">
+                                <label for="otherPurposeNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="otherPurposeDetailsGroup" style="display: none;">
+                        <label for="otherPurposeDetails">If "Yes", describe such purpose</label>
+                        <textarea id="otherPurposeDetails" name="otherPurposeDetails"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>h. Is the vehicle a rebuild? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="rebuildYes" name="rebuild" value="yes" required>
+                                <label for="rebuildYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="rebuildNo" name="rebuild" value="no">
+                                <label for="rebuildNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Vehicle Condition & Security -->
+            <div class="section" data-section="7">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h2 class="section-title">Vehicle Condition & Security</h2>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>3. Is the vehicle being bought on terms? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="hirePurchaseYes" name="hirePurchase" value="yes" required>
+                                <label for="hirePurchaseYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hirePurchaseNo" name="hirePurchase" value="no">
+                                <label for="hirePurchaseNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="hirePurchaseCompanyGroup" style="display: none;">
+                        <label for="hirePurchaseCompany">Name of Hire Purchase Company</label>
+                        <input type="text" id="hirePurchaseCompany" name="hirePurchaseCompany">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>4. Does any person or organisation have an interest in the vehicle such as a bond or
+                            lien? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="interestYes" name="interest" value="yes" required>
+                                <label for="interestYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="interestNo" name="interest" value="no">
+                                <label for="interestNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="interestDetailsGroup" style="display: none;">
+                        <label for="interestDetails">If "Yes", please give details</label>
+                        <textarea id="interestDetails" name="interestDetails"></textarea>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>5. Is the vehicle kept in a locked garage at night? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="garageYes" name="garage" value="yes" required>
+                                <label for="garageYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="garageNo" name="garage" value="no">
+                                <label for="garageNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="garageLocationGroup" style="display: none;">
+                        <label for="garageLocation">If "No", please advise where it is kept</label>
+                        <input type="text" id="garageLocation" name="garageLocation">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>6. Is the vehicle regularly serviced? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="servicedYes" name="serviced" value="yes" required>
+                                <label for="servicedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="servicedNo" name="serviced" value="no">
+                                <label for="servicedNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="serviceDetailsGroup" style="display: none;">
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="lastServiceDate">When was it last serviced?</label>
+                                <input type="date" id="lastServiceDate" name="lastServiceDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceGarage">And by which Garage?</label>
+                                <input type="text" id="serviceGarage" name="serviceGarage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>7. Please state type of security on the vehicle</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="securityImmobiliser" name="security" value="immobiliser">
+                                <label for="securityImmobiliser">Immobiliser</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="securityAlarm" name="security" value="alarm">
+                                <label for="securityAlarm">Alarm</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="securityAntiHijack" name="security" value="antiHijack">
+                                <label for="securityAntiHijack">Anti Hijack</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="securityOther" name="security" value="other">
+                                <label for="securityOther">Other</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="securityNone" name="security" value="none">
+                                <label for="securityNone">None</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="securityOtherDetailsGroup" style="display: none;">
+                        <label for="securityOtherDetails">Provide details of Other security system</label>
+                        <input type="text" id="securityOtherDetails" name="securityOtherDetails">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>8. Has the vehicle been modified in any way? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="modifiedYes" name="modified" value="yes" required>
+                                <label for="modifiedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="modifiedNo" name="modified" value="no">
+                                <label for="modifiedNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="modificationDetailsGroup" style="display: none;">
+                        <label for="modificationDetails">If "Yes", give details</label>
+                        <textarea id="modificationDetails" name="modificationDetails"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Additional Coverage -->
+            <div class="section" data-section="8">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <h2 class="section-title">Additional Coverage</h2>
+                </div>
+
+                <div class="note">
+                    The policy limit for Car Radio/Tape/CD Audio Systems is 1% of vehicle sum insured
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>10. Do you wish to insure your Audio System separately? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="audioInsuranceYes" name="audioInsurance" value="yes" required>
+                                <label for="audioInsuranceYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="audioInsuranceNo" name="audioInsurance" value="no">
+                                <label for="audioInsuranceNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="audioDetailsGroup" style="display: none;">
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="audioMake">Make/Serial No.</label>
+                                <input type="text" id="audioMake" name="audioMake">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="audioValue">Value ($)</label>
+                                <input type="number" id="audioValue" name="audioValue" step="0.01" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>11. Third Party Property Damage Limit Required <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="damage2000" name="damageLimit" value="2000" required>
+                                <label for="damage2000">$2,000.00</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="damage10000" name="damageLimit" value="10000">
+                                <label for="damage10000">$10,000.00</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="damage20000" name="damageLimit" value="20000">
+                                <label for="damage20000">$20,000.00</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="damage30000" name="damageLimit" value="30000">
+                                <label for="damage30000">$30,000.00</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="damageOther" name="damageLimit" value="other">
+                                <label for="damageOther">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="damageLimitOtherGroup" style="display: none;">
+                        <label for="damageLimitOther">State the limit required ($)</label>
+                        <input type="number" id="damageLimitOther" name="damageLimitOther" step="0.01" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9: Payment & Valuation -->
+            <div class="section" data-section="9">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <h2 class="section-title">Payment & Valuation</h2>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>7. How would you like to pay for your policy? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="paymentTermly" name="paymentFrequency" value="termly" required>
+                                <label for="paymentTermly">Termly</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="paymentHalfYearly" name="paymentFrequency" value="halfYearly">
+                                <label for="paymentHalfYearly">Half Yearly</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="paymentAnnually" name="paymentFrequency" value="annually">
+                                <label for="paymentAnnually">Annually</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-group">
+                        <label>8. Have you had your vehicle valued at a Valuation Centre? <span
+                                class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="valuedYes" name="valued" value="yes" required>
+                                <label for="valuedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="valuedNo" name="valued" value="no">
+                                <label for="valuedNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="valuationCentreGroup" style="display: none;">
+                        <label for="valuationCentre">If "Yes", please state which centre and attach the relevant
+                            certificate</label>
+                        <input type="text" id="valuationCentre" name="valuationCentre">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 10: Document Upload -->
+            <div class="section" data-section="10">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <h2 class="section-title">Required Documents</h2>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Please upload the following documents:</p>
+
+                    <div class="form-group">
+                        <label>Driver's Licence <span class="required">*</span></label>
+                        <div class="file-upload" onclick="document.getElementById('driverLicence').click()">
+                            <input type="file" id="driverLicence" name="driverLicence" accept=".pdf,.jpg,.jpeg,.png">
+                            <p class="file-upload-label">Click to upload Driver's Licence</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Copy of Registration Book <span class="required">*</span></label>
+                        <div class="file-upload" onclick="document.getElementById('registrationBook').click()">
+                            <input type="file" id="registrationBook" name="registrationBook"
+                                accept=".pdf,.jpg,.jpeg,.png">
+                            <p class="file-upload-label">Click to upload Registration Book</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Copy of Change of Ownership (if applicable)</label>
+                        <div class="file-upload" onclick="document.getElementById('changeOwnership').click()">
+                            <input type="file" id="changeOwnership" name="changeOwnership"
+                                accept=".pdf,.jpg,.jpeg,.png">
+                            <p class="file-upload-label">Click to upload Change of Ownership</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Copy of Agreement of Sale (if applicable)</label>
+                        <div class="file-upload" onclick="document.getElementById('agreementSale').click()">
+                            <input type="file" id="agreementSale" name="agreementSale" accept=".pdf,.jpg,.jpeg,.png">
+                            <p class="file-upload-label">Click to upload Agreement of Sale</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 11: Declaration -->
+            <div class="section" data-section="11">
+                <div class="section-header">
+                    <div class="section-number">11</div>
+                    <h2 class="section-title">Declaration</h2>
+                </div>
+
+                <div class="warning-box">
+                    <strong>The Insured further warrants that:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>All the information provided herein is correct in all respects and that the insurer will not
+                            be held liable for any incorrect information presented.</li>
+                        <li>He/She is the owner of the vehicles and that in a case where change of ownership has not
+                            been effected into the insured's names, the insured has duly notified the insurer and
+                            furnished all the supporting documents in that regard.</li>
+                        <li>He/she has disclosed all the material facts necessary for the insurer to carry out an
+                            assessment of the vehicle, and that no liability shall extend to the insurer by virtue of
+                            any omissions and/or misrepresentations of any kind by the insured in this regard.</li>
+                        <li>He/She has voluntarily consented to the insurer carrying out the physical inspection and
+                            does not hold the insurer liable for the carrying out of such inspection on the vehicle.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="office-section" style="margin-top: 2rem;">
+                    <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+                        I/We do hereby declare that the vehicle(s) described is/are and shall be kept in an efficient
+                        condition and that the above statements are true and correct. I/we agree to accept a Policy of
+                        Insurance according to this proposal, subject to the terms, exceptions and conditions to be
+                        expressed in and on the Policy, and undertake to pay the premium when called upon to do so.
+                    </p>
+                    <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+                        I/We undertake that the vehicle(s) to be insured shall not be driven by any person who to my/our
+                        knowledge has been refused any motor vehicle insurance or continuance thereof.
+                    </p>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="proposerSignature">Proposer's Signature <span class="required">*</span></label>
+                            <div class="signature-container">
+                                <canvas id="signatureCanvas" class="signature-canvas" width="600" height="200"></canvas>
+                                <input type="hidden" id="proposerSignature" name="proposerSignature" required>
+                                <div class="signature-controls">
+                                    <div style="display: flex; gap: 10px;">
+                                        <button type="button" class="signature-btn" id="clearBtn">Clear</button>
+                                        <label class="signature-btn">
+                                            Upload Image
+                                            <input type="file" id="signatureUpload" accept="image/*"
+                                                style="display: none;">
+                                        </label>
+                                    </div>
+                                    <span style="font-size: 11px; color: #888;">Sign above or upload</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declarationDate">Date <span class="required">*</span></label>
+                            <input type="date" id="declarationDate" name="declarationDate" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="button" class="save-draft-btn">Save as Draft</button>
+                <button type="submit" class="submit-btn">Submit Proposal</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Progress bar
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const totalSections = sections.length;
+            let completedSections = 0;
+
+            sections.forEach(section => {
+                const inputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+                let allFilled = true;
+
+                inputs.forEach(input => {
+                    if (input.type === 'radio' || input.type === 'checkbox') {
+                        const name = input.name;
+                        const checked = section.querySelector(`input[name="${name}"]:checked`);
+                        if (!checked && input.hasAttribute('required')) {
+                            allFilled = false;
+                        }
+                    } else if (!input.value) {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) completedSections++;
+            });
+
+            const progress = (completedSections / totalSections) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Conditional field displays
+        document.querySelectorAll('input[name="currentlyInsured"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('presentInsurersGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="healthIssues"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('healthDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="accidents"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('accidentDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Insurance issues
+        const insuranceIssuesRadios = [
+            'declined', 'carryLoss', 'increasedPremium', 'cancelled', 'refusedRenewal'
+        ];
+
+        insuranceIssuesRadios.forEach(name => {
+            document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const anyYes = insuranceIssuesRadios.some(n => {
+                        const checked = document.querySelector(`input[name="${n}"]:checked`);
+                        return checked && checked.value === 'yes';
+                    });
+                    document.getElementById('insuranceIssuesReasonsGroup').style.display =
+                        anyYes ? 'block' : 'none';
+                });
+            });
+        });
+
+        document.querySelectorAll('input[name="otherPurpose"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('otherPurposeDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="hirePurchase"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('hirePurchaseCompanyGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="interest"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('interestDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="garage"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('garageLocationGroup').style.display =
+                    this.value === 'no' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="serviced"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('serviceDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.getElementById('securityOther').addEventListener('change', function () {
+            document.getElementById('securityOtherDetailsGroup').style.display =
+                this.checked ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('input[name="modified"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('modificationDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="audioInsurance"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('audioDetailsGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="damageLimit"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('damageLimitOtherGroup').style.display =
+                    this.value === 'other' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="valued"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('valuationCentreGroup').style.display =
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Cover selection
+        function selectCover(element, coverId) {
+            document.querySelectorAll('.cover-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            document.getElementById(coverId).checked = true;
+        }
+
+        // File upload labels
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function () {
+                const label = this.parentElement.querySelector('.file-upload-label');
+                if (this.files.length > 0) {
+                    label.textContent = this.files[0].name;
+                }
+            });
+        });
+
+        // Set current date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('declarationDate').value = today;
+
+        // Monitor all inputs for progress
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('change', updateProgress);
+            element.addEventListener('input', updateProgress);
+        });
+
+        // Initial progress calculation
+        updateProgress();
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const signatureInput = document.getElementById('proposerSignature');
+        const clearBtn = document.getElementById('clearBtn');
+        const signatureUpload = document.getElementById('signatureUpload');
+
+        let isDrawing = false;
+        let ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#2c3e50';
+
+            const startDrawing = (e) => {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            };
+
+            const draw = (e) => {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            };
+
+            const stopDrawing = () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    saveSignature();
+                }
+            };
+
+            const saveSignature = () => {
+                signatureInput.value = canvas.toDataURL();
+                updateProgress();
+            };
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = '';
+                updateProgress();
+            });
+
+            signatureUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            saveSignature();
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('motorForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting…';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('http://localhost:3001/api/motor-insurance', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ Motor Insurance proposal submitted successfully!\n\nReference Number: ${result.referenceNumber}\n\nAlliance Insurance Company will review your application and contact you shortly.`);
+                    this.reset();
+                } else {
+                    alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                console.error('Submission error:', err);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Save draft
+        document.querySelector('.save-draft-btn').addEventListener('click', function () {
+            const formData = new FormData(document.getElementById('motorForm'));
+            const data = Object.fromEntries(formData);
+
+            localStorage.setItem('motorInsuranceDraft', JSON.stringify(data));
+            alert('Draft saved successfully! You can continue later.');
+        });
+
+        // Load draft on page load
+        window.addEventListener('load', function () {
+            const draft = localStorage.getItem('motorInsuranceDraft');
+            if (draft && confirm('Would you like to load your saved draft?')) {
+                const data = JSON.parse(draft);
+                Object.keys(data).forEach(key => {
+                    const element = document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'radio' || element.type === 'checkbox') {
+                            const radio = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+                            if (radio) radio.checked = true;
+                        } else {
+                            element.value = data[key];
+                        }
+                    }
+                });
+                updateProgress();
+            }
+        });
+    </script>
+</body>
+
+</html>

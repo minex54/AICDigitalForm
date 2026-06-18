@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alliance Insurance - Motor Claim Form</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #405C75;
+      --primary-dark: #2F4558;
+      --primary-light: #5A7A98;
+      --secondary: #8B2332;
+      --secondary-dark: #6B1825;
+      --secondary-light: #eef2f7;
+      --text-main: #1a1a1a;
+      --text-secondary: #5a6c7f;
+      --text-light: #8898aa;
+      --bg-body: #f4f7fa;
+      --bg-card: #ffffff;
+      --input-bg: #f9fafb;
+      --border-color: #e2e8f0;
+      --focus-ring: rgba(44, 62, 80, 0.2);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .nav-header {
+      background: var(--bg-card);
+      padding: 20px 30px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo .alliance {
+      color: var(--primary);
+    }
+
+    .logo .divider {
+      color: var(--secondary);
+      margin: 0 8px;
+      font-weight: 300;
+      opacity: 0.5;
+    }
+
+    .logo .insurance {
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 12px;
+      background: var(--input-bg);
+      padding: 5px;
+      border-radius: var(--radius-full);
+    }
+
+    .nav-tab {
+      padding: 8px 20px;
+      border: 1.5px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: var(--transition);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-tab:hover {
+      background: var(--primary);
+      color: white !important;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-tab.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Form Container */
+    .form-container {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .form-header {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--secondary) 100%);
+      padding: 40px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .form-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .form-header p {
+      font-size: 15px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+      font-weight: 300;
+    }
+
+    .company-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 30px 40px;
+      background: var(--input-bg);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 13px;
+    }
+
+    .company-info h3 {
+      font-size: 12px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .company-info p {
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+
+    .form-content {
+      padding: 40px;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 40px;
+      background: white;
+      border-radius: var(--radius-md);
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 24px;
+      background: var(--secondary);
+      border-radius: var(--radius-full);
+    }
+
+    .subsection-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin: 30px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Field Groups */
+    .field-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+
+    .field-group.small {
+      min-width: 140px;
+      flex: 0.5;
+    }
+
+    .field-group.full {
+      min-width: 100%;
+    }
+
+    .field-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+    }
+
+    .field-input {
+      padding: 14px 16px;
+      border: 1px solid var(--border-color);
+      background: var(--input-bg);
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      color: var(--text-main);
+      transition: var(--transition);
+      font-family: 'Open Sans', sans-serif;
+      width: 100%;
+    }
+
+    .field-input:hover {
+      background: white;
+      border-color: #cbd5e0;
+    }
+
+    .field-input:focus {
+      outline: none;
+      border-color: var(--secondary);
+      background: white;
+      box-shadow: 0 0 0 4px var(--focus-ring);
+    }
+
+    .field-input::placeholder {
+      color: #a0aec0;
+    }
+
+    .field-group:focus-within .field-label {
+      color: var(--secondary);
+    }
+
+    textarea.field-input {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    select.field-input {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235a6c7f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+
+    /* Checkbox and Radio Groups */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 12px 0;
+      padding: 10px 0;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background: var(--input-bg);
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .checkbox-item:hover {
+      background: white;
+      border-color: var(--border-color);
+    }
+
+    .checkbox-item input[type="checkbox"],
+    .checkbox-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--secondary);
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Tables */
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      font-size: 14px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .data-table th {
+      background: var(--input-bg);
+      color: var(--text-secondary);
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 16px;
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .data-table input:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 2px var(--focus-ring);
+    }
+
+    /* Injured Person Box */
+    .injured-person-box {
+      background: var(--bg-body);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .injured-person-box:hover {
+      border-color: #cbd5e0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .injured-person-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .injured-person-title {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 15px;
+    }
+
+    .remove-btn {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .remove-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .add-btn {
+      background: var(--secondary-light);
+      color: var(--secondary-dark);
+      border: none;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+      transition: var(--transition);
+      width: 100%;
+      justify-content: center;
+    }
+
+    .add-btn:hover {
+      background: #d1eeee;
+      transform: translateY(-1px);
+    }
+
+    /* Declaration Box */
+    .declaration-box {
+      background: #fffcf0;
+      padding: 30px;
+      border-radius: var(--radius-md);
+      border: 1px solid #f1e0ac;
+      margin: 30px 0;
+      position: relative;
+    }
+
+    .declaration-box::before {
+      content: 'DECLARATION';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: #f1c40f;
+      color: #5c4b08;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 1px;
+    }
+
+    .declaration-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    /* Rating Guide Table */
+    .rating-guide {
+      background: var(--bg-body);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      margin: 24px 0;
+    }
+
+    .rating-guide h4 {
+      color: var(--text-main);
+      margin-bottom: 16px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .rating-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: white;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .rating-guide th,
+    .rating-guide td {
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+
+    .rating-guide th {
+      background: var(--input-bg);
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* Page Navigation */
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .page-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .page-dot.active {
+      background: var(--secondary);
+      transform: scale(1.4);
+      box-shadow: 0 0 0 4px var(--secondary-light);
+    }
+
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .nav-btn {
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn.primary {
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-btn.primary:hover {
+      background: var(--secondary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-btn.secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .nav-btn.secondary:hover {
+      background: var(--input-bg);
+      color: var(--text-main);
+      border-color: #cbd5e0;
+    }
+
+    .nav-btn:disabled {
+      background: var(--input-bg);
+      cursor: not-allowed;
+      border-color: transparent;
+      color: var(--text-light);
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* Submit Button */
+    .submit-section {
+      text-align: center;
+      padding: 40px;
+      background: var(--bg-body);
+      margin-top: 30px;
+      border-radius: var(--radius-md);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: 18px 60px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 10px 20px rgba(139, 35, 50, 0.2);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(139, 35, 50, 0.3);
+    }
+
+    .submit-btn:disabled {
+      background: var(--text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Success/Error Messages */
+    .message {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    .message.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .message.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Diagram Area */
+    .diagram-area {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      min-height: 300px;
+      background: var(--input-bg);
+      text-align: center;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .diagram-area:hover {
+      border-color: var(--secondary);
+      background: #f0fdfa;
+    }
+
+    .diagram-area textarea {
+      width: 100%;
+      height: 250px;
+      border: none;
+      resize: none;
+      font-size: 14px;
+      background: transparent;
+      outline: none;
+    }
+
+    .diagram-instruction {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .company-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .field-group {
+        min-width: 100%;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .form-header {
+        padding: 30px 20px;
+      }
+
+      .form-content {
+        padding: 20px;
+      }
+    }
+
+    .section-note {
+      font-size: 13px;
+      margin-bottom: 15px;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .warning-text {
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+      margin: 15px 0;
+      padding: 10px;
+      background: #fff5f5;
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .page-indicator {
+      font-weight: 600;
+      color: var(--secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+    }
+
+    .app-footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-light);
+      font-size: 12px;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    /* Signature Pad */
+    .signature-container {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: white;
+      overflow: hidden;
+    }
+
+    .signature-canvas {
+      width: 100%;
+      height: 200px;
+      background: white;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .signature-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: var(--input-bg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .signature-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--text-secondary);
+    }
+
+    .signature-btn:hover {
+      background: var(--secondary-light);
+      color: var(--secondary);
+    }
+
+    /* Photo Upload */
+    .photo-upload-area {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      text-align: center;
+      background: var(--input-bg);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .photo-upload-area:hover {
+      border-color: var(--secondary);
+      background: #f0fdfa;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .photo-preview {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-remove {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const API_BASE = 'http://localhost:3001/api';
+
+    // ============================================
+    // SIGNATURE PAD COMPONENT
+    // ============================================
+    function SignaturePad({ value, onChange, label }) {
+      const canvasRef = useRef(null);
+      const [isDrawing, setIsDrawing] = useState(false);
+      const [hasSignature, setHasSignature] = useState(!!value);
+
+      useEffect(() => {
+        if (value && canvasRef.current) {
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext('2d');
+          const img = new Image();
+          img.onload = () => ctx.drawImage(img, 0, 0);
+          img.src = value;
+        }
+      }, []);
+
+      const startDrawing = (e) => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || e.touches[0].clientX) - rect.left;
+        const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        setIsDrawing(true);
+      };
+
+      const draw = (e) => {
+        if (!isDrawing) return;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || e.touches[0].clientX) - rect.left;
+        const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      };
+
+      const stopDrawing = () => {
+        if (isDrawing) {
+          setIsDrawing(false);
+          saveSignature();
+        }
+      };
+
+      const saveSignature = () => {
+        const canvas = canvasRef.current;
+        const dataUrl = canvas.toDataURL();
+        setHasSignature(true);
+        onChange(dataUrl);
+      };
+
+      const clearSignature = () => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        setHasSignature(false);
+        onChange('');
+      };
+
+      const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = canvasRef.current;
+              const ctx = canvas.getContext('2d');
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              saveSignature();
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+
+      return (
+        <div className="field-group full">
+          <label className="field-label">{label}</label>
+          <div className="signature-container">
+            <canvas
+              ref={canvasRef}
+              className="signature-canvas"
+              width={600}
+              height={200}
+              onMouseDown={startDrawing}
+              onMouseMove={draw}
+              onMouseUp={stopDrawing}
+              onMouseLeave={stopDrawing}
+              onTouchStart={startDrawing}
+              onTouchMove={draw}
+              onTouchEnd={stopDrawing}
+            />
+            <div className="signature-controls">
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button type="button" className="signature-btn" onClick={clearSignature}>Clear</button>
+                <label className="signature-btn">
+                  Upload Image
+                  <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileUpload} />
+                </label>
+              </div>
+              <span style={{ fontSize: '11px', color: '#888' }}>Sign above or upload</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ============================================
+    // PHOTO UPLOAD COMPONENT
+    // ============================================
+    function PhotoUpload({ photos, onChange }) {
+      const handleFileSelect = (e) => {
+        const files = Array.from(e.target.files);
+
+        files.forEach(file => {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            onChange(prev => [...prev, event.target.result]);
+          };
+          reader.readAsDataURL(file);
+        });
+      };
+
+      const removePhoto = (index) => {
+        onChange(prev => prev.filter((_, i) => i !== index));
+      };
+
+      return (
+        <div className="field-group full">
+          <label className="field-label">Accident Photos</label>
+          <div className="photo-upload-area" onClick={() => document.getElementById('photo-input').click()}>
+            <p style={{ color: 'var(--secondary)', fontWeight: '600' }}>Click to Upload Photos</p>
+            <p style={{ fontSize: '12px', color: 'var(--text-light)' }}>JPG, PNG supported</p>
+            <input
+              id="photo-input"
+              type="file"
+              multiple
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={handleFileSelect}
+            />
+          </div>
+          {photos.length > 0 && (
+            <div className="photo-grid">
+              {photos.map((photo, index) => (
+                <div key={index} className="photo-preview">
+                  <img src={photo} alt={`Accident ${index + 1}`} />
+                  <button type="button" className="photo-remove" onClick={() => removePhoto(index)}>×</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ============================================
+    // MOTOR CLAIM FORM COMPONENT
+    // ============================================
+    function MotorClaimForm() {
+      const [currentPage, setCurrentPage] = useState(1);
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [submitStatus, setSubmitStatus] = useState(null);
+
+      const [formData, setFormData] = useState({
+        insured: { name: '', address: '', telephoneHome: '', telephoneBusiness: '' },
+        payment: { method: '', bankName: '', accountNumber: '', branch: '' },
+        vehicle: {
+          makeModel: '', year: '', regNo: '', ownerName: '', ownerAddress: '',
+          purpose: '', hirePurchaseCompany: '', amountOutstanding: ''
+        },
+        driver: {
+          fullName: '', ageDob: '', licenceNo: '', datePlaceIssue: '',
+          licenceType: '', classes: '', endorsements: '', endorsementDetails: ''
+        },
+        accident: {
+          date: '', place: '', time: '', weatherConditions: '', roadDescription: '',
+          authorizedBy: '', authorizationReason: '', speed: '', collisionDirection: '',
+          policeStation: '', policeReportNo: '', noPoliceReportReason: '', personsInVehicle: ''
+        },
+        accidentPhotos: [],
+        injuredPersons: [
+          {
+            name: '', address: '', apparentAge: '', relationshipToInsured: '',
+            injuredType: '', natureOfInjuries: '', doctorName: '', hospitalTakenTo: ''
+          }
+        ],
+        propertyDamage: [
+          {
+            ownerName: '', ownerAddress: '', propertyDescription: '', damageNatureExtent: '',
+            estimatedRepairCost: '', claimMade: '', claimantInsured: '', claimantLicenceNo: '',
+            claimantInsuranceCompany: ''
+          }
+        ],
+        witnesses: [{ name: '', address: '' }, { name: '', address: '' }],
+        damage: {
+          partsDamaged: '', estimatedRepairCost: '', partyCausedDamageName: '',
+          partyCausedDamageAddress: '', partyInsured: '', partyInsuranceCompany: '', vehicleLocation: ''
+        },
+        driverStatement: { statement: '', date: '', signature: '' },
+        declaration: { date: '', signature: '' }
+      });
+
+      const handleChange = (section, field, value) => {
+        setFormData(prev => ({
+          ...prev,
+          [section]: { ...prev[section], [field]: value }
+        }));
+      };
+
+      const handleArrayChange = (section, index, field, value) => {
+        setFormData(prev => {
+          const newArray = [...prev[section]];
+          newArray[index] = { ...newArray[index], [field]: value };
+          return { ...prev, [section]: newArray };
+        });
+      };
+
+      const addInjuredPerson = () => {
+        setFormData(prev => ({
+          ...prev,
+          injuredPersons: [...prev.injuredPersons, {
+            name: '', address: '', apparentAge: '', relationshipToInsured: '',
+            injuredType: '', natureOfInjuries: '', doctorName: '', hospitalTakenTo: ''
+          }]
+        }));
+      };
+
+      const removeInjuredPerson = (index) => {
+        setFormData(prev => ({
+          ...prev,
+          injuredPersons: prev.injuredPersons.filter((_, i) => i !== index)
+        }));
+      };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+          const response = await fetch(`${API_BASE}/motor-claims`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            setSubmitStatus({
+              type: 'success',
+              message: `Claim submitted successfully! Claim Number: ${result.claimNumber}`
+            });
+          } else {
+            setSubmitStatus({ type: 'error', message: result.message || 'Failed to submit claim' });
+          }
+        } catch (error) {
+          setSubmitStatus({ type: 'error', message: 'Network error. Please ensure the backend server is running.' });
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+
+      const totalPages = 3;
+
+      const renderPage1 = () => (
+        <>
+          {/* Insured Details */}
+          <div className="section">
+            <h2 className="section-title">Insured Details</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Name</label>
+                <input type="text" className="field-input" value={formData.insured.name}
+                  onChange={(e) => handleChange('insured', 'name', e.target.value)} required />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Address *</label>
+                <input type="text" className="field-input" value={formData.insured.address}
+                  onChange={(e) => handleChange('insured', 'address', e.target.value)} required />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Telephone (Home) *</label>
+                <input type="tel" className="field-input" value={formData.insured.telephoneHome}
+                  onChange={(e) => handleChange('insured', 'telephoneHome', e.target.value)}
+                  pattern="[0-9+\-\s()]+" title="Please enter a valid phone number" required />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Telephone (Business)</label>
+                <input type="tel" className="field-input" value={formData.insured.telephoneBusiness}
+                  onChange={(e) => handleChange('insured', 'telephoneBusiness', e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Settlement */}
+          <div className="section">
+            <h2 className="section-title">Payment Settlement</h2>
+            <p className="section-note">
+              *Should the company be liable to settle this claim, please tick the applicable:
+            </p>
+            <div className="checkbox-group">
+              <label className="checkbox-item">
+                <input type="radio" name="paymentMethod" value="bank_deposit"
+                  checked={formData.payment.method === 'bank_deposit'}
+                  onChange={(e) => handleChange('payment', 'method', e.target.value)} />
+                <span className="checkbox-label">Deposit Cheque Into Bank</span>
+              </label>
+              <label className="checkbox-item">
+                <input type="radio" name="paymentMethod" value="via_brokers"
+                  checked={formData.payment.method === 'via_brokers'}
+                  onChange={(e) => handleChange('payment', 'method', e.target.value)} />
+                <span className="checkbox-label">Send Cheque Via My Brokers</span>
+              </label>
+            </div>
+            {formData.payment.method === 'bank_deposit' && (
+              <div className="field-row">
+                <div className="field-group">
+                  <label className="field-label">Bank Name</label>
+                  <input type="text" className="field-input" value={formData.payment.bankName}
+                    onChange={(e) => handleChange('payment', 'bankName', e.target.value)} />
+                </div>
+                <div className="field-group">
+                  <label className="field-label">Account Number</label>
+                  <input type="text" className="field-input" value={formData.payment.accountNumber}
+                    onChange={(e) => handleChange('payment', 'accountNumber', e.target.value)} />
+                </div>
+                <div className="field-group">
+                  <label className="field-label">Branch</label>
+                  <input type="text" className="field-input" value={formData.payment.branch}
+                    onChange={(e) => handleChange('payment', 'branch', e.target.value)} />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Motor Vehicle Details */}
+          <div className="section">
+            <h2 className="section-title">Motor Vehicle Details</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Make/Model *</label>
+                <input type="text" className="field-input" value={formData.vehicle.makeModel}
+                  onChange={(e) => handleChange('vehicle', 'makeModel', e.target.value)} required />
+              </div>
+              <div className="field-group small">
+                <label className="field-label">Year</label>
+                <input type="text" className="field-input" value={formData.vehicle.year}
+                  onChange={(e) => handleChange('vehicle', 'year', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Registration No. *</label>
+                <input type="text" className="field-input" value={formData.vehicle.regNo}
+                  onChange={(e) => handleChange('vehicle', 'regNo', e.target.value)} required />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Name of Owner</label>
+                <input type="text" className="field-input" value={formData.vehicle.ownerName}
+                  onChange={(e) => handleChange('vehicle', 'ownerName', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Address</label>
+                <input type="text" className="field-input" value={formData.vehicle.ownerAddress}
+                  onChange={(e) => handleChange('vehicle', 'ownerAddress', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Purpose Vehicle Was Being Used For</label>
+                <input type="text" className="field-input" value={formData.vehicle.purpose}
+                  onChange={(e) => handleChange('vehicle', 'purpose', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Hire-Purchase Company (if any)</label>
+                <input type="text" className="field-input" value={formData.vehicle.hirePurchaseCompany}
+                  onChange={(e) => handleChange('vehicle', 'hirePurchaseCompany', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Amount Outstanding</label>
+                <input type="text" className="field-input" value={formData.vehicle.amountOutstanding}
+                  onChange={(e) => handleChange('vehicle', 'amountOutstanding', e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          {/* Driver's Licence */}
+          <div className="section">
+            <h2 className="section-title">Driver's Licence</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Driver's Full Name</label>
+                <input type="text" className="field-input" value={formData.driver.fullName}
+                  onChange={(e) => handleChange('driver', 'fullName', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Age / Date of Birth</label>
+                <input type="text" className="field-input" value={formData.driver.ageDob}
+                  onChange={(e) => handleChange('driver', 'ageDob', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Driver's Licence No.</label>
+                <input type="text" className="field-input" value={formData.driver.licenceNo}
+                  onChange={(e) => handleChange('driver', 'licenceNo', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Date & Place of Issue</label>
+                <input type="text" className="field-input" value={formData.driver.datePlaceIssue}
+                  onChange={(e) => handleChange('driver', 'datePlaceIssue', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Full or Provisional</label>
+                <select className="field-input" value={formData.driver.licenceType}
+                  onChange={(e) => handleChange('driver', 'licenceType', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="full">Full</option>
+                  <option value="provisional">Provisional</option>
+                </select>
+              </div>
+              <div className="field-group">
+                <label className="field-label">Class(es)</label>
+                <input type="text" className="field-input" value={formData.driver.classes}
+                  onChange={(e) => handleChange('driver', 'classes', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Endorsements</label>
+                <select className="field-input" value={formData.driver.endorsements}
+                  onChange={(e) => handleChange('driver', 'endorsements', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div className="field-group">
+                <label className="field-label">When and Why (if Yes)</label>
+                <input type="text" className="field-input" value={formData.driver.endorsementDetails}
+                  onChange={(e) => handleChange('driver', 'endorsementDetails', e.target.value)} />
+              </div>
+            </div>
+          </div>
+        </>
+      );
+
+      const renderPage2 = () => (
+        <>
+          {/* Date, Time and Place of Accident */}
+          <div className="section">
+            <h2 className="section-title">Date, Time and Place of Accident</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Date of Accident</label>
+                <input type="date" className="field-input" value={formData.accident.date}
+                  onChange={(e) => handleChange('accident', 'date', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Place of Accident</label>
+                <input type="text" className="field-input" value={formData.accident.place}
+                  onChange={(e) => handleChange('accident', 'place', e.target.value)} />
+              </div>
+              <div className="field-group small">
+                <label className="field-label">Time</label>
+                <input type="time" className="field-input" value={formData.accident.time}
+                  onChange={(e) => handleChange('accident', 'time', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Weather Conditions</label>
+                <input type="text" className="field-input" value={formData.accident.weatherConditions}
+                  onChange={(e) => handleChange('accident', 'weatherConditions', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Description of Road and Its Condition</label>
+                <input type="text" className="field-input" value={formData.accident.roadDescription}
+                  onChange={(e) => handleChange('accident', 'roadDescription', e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          {/* Description of Accident */}
+          <div className="section">
+            <h2 className="section-title">Description of Accident</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Who Authorized Use of Motor Vehicle?</label>
+                <input type="text" className="field-input" value={formData.accident.authorizedBy}
+                  onChange={(e) => handleChange('accident', 'authorizedBy', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Why?</label>
+                <input type="text" className="field-input" value={formData.accident.authorizationReason}
+                  onChange={(e) => handleChange('accident', 'authorizationReason', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Speed</label>
+                <input type="text" className="field-input" value={formData.accident.speed}
+                  onChange={(e) => handleChange('accident', 'speed', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">If Object Collided With Was Moving, Direction?</label>
+                <input type="text" className="field-input" value={formData.accident.collisionDirection}
+                  onChange={(e) => handleChange('accident', 'collisionDirection', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Police Station Where Report Was Made</label>
+                <input type="text" className="field-input" value={formData.accident.policeStation}
+                  onChange={(e) => handleChange('accident', 'policeStation', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">IR or TAB No.</label>
+                <input type="text" className="field-input" value={formData.accident.policeReportNo}
+                  onChange={(e) => handleChange('accident', 'policeReportNo', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">If Matter Not Reported to Police, Reason</label>
+                <input type="text" className="field-input" value={formData.accident.noPoliceReportReason}
+                  onChange={(e) => handleChange('accident', 'noPoliceReportReason', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Number of Persons in Insured's Motor Vehicle</label>
+                <input type="number" className="field-input" value={formData.accident.personsInVehicle}
+                  onChange={(e) => handleChange('accident', 'personsInVehicle', e.target.value)} />
+              </div>
+            </div>
+
+            <PhotoUpload
+              photos={formData.accidentPhotos}
+              onChange={(newPhotos) => setFormData(prev => ({ ...prev, accidentPhotos: typeof newPhotos === 'function' ? newPhotos(prev.accidentPhotos) : newPhotos }))}
+            />
+          </div>
+
+          {/* Persons Injured */}
+          <div className="section">
+            <h2 className="section-title">Persons Injured</h2>
+            {formData.injuredPersons.map((person, index) => (
+              <div key={index} className="injured-person-box">
+                <div className="injured-person-header">
+                  <span className="injured-person-title">Injured Person {index + 1}</span>
+                  {index > 0 && (
+                    <button type="button" className="remove-btn" onClick={() => removeInjuredPerson(index)}>
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <div className="field-row">
+                  <div className="field-group">
+                    <label className="field-label">Name</label>
+                    <input type="text" className="field-input" value={person.name}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'name', e.target.value)} />
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Address</label>
+                    <input type="text" className="field-input" value={person.address}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'address', e.target.value)} />
+                  </div>
+                </div>
+                <div className="field-row">
+                  <div className="field-group small">
+                    <label className="field-label">Apparent Age</label>
+                    <input type="text" className="field-input" value={person.apparentAge}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'apparentAge', e.target.value)} />
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Relationship to Insured</label>
+                    <input type="text" className="field-input" value={person.relationshipToInsured}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'relationshipToInsured', e.target.value)} />
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Injured Type</label>
+                    <select className="field-input" value={person.injuredType}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'injuredType', e.target.value)}>
+                      <option value="">Select</option>
+                      <option value="occupant_insured">Occupant of Insured's Car</option>
+                      <option value="occupant_other">Occupant of Other Car</option>
+                      <option value="pedestrian">Pedestrian</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="field-row">
+                  <div className="field-group full">
+                    <label className="field-label">Nature and Extent of Injuries</label>
+                    <textarea className="field-input" value={person.natureOfInjuries}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'natureOfInjuries', e.target.value)} />
+                  </div>
+                </div>
+                <div className="field-row">
+                  <div className="field-group">
+                    <label className="field-label">Doctor's Name (if medical attention rendered)</label>
+                    <input type="text" className="field-input" value={person.doctorName}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'doctorName', e.target.value)} />
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Where Were Injured Taken</label>
+                    <input type="text" className="field-input" value={person.hospitalTakenTo}
+                      onChange={(e) => handleArrayChange('injuredPersons', index, 'hospitalTakenTo', e.target.value)} />
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button type="button" className="add-btn" onClick={addInjuredPerson}>
+              + Add Another Injured Person
+            </button>
+          </div>
+
+          {/* Damage to Property of Others */}
+          <div className="section">
+            <h2 className="section-title">Damage to Property of Others</h2>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Name of Owner</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.ownerName || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'ownerName', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Address</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.ownerAddress || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'ownerAddress', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Kind of Property (if motor vehicle, give make & year)</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.propertyDescription || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'propertyDescription', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Nature and Extent of Damage</label>
+                <textarea className="field-input" value={formData.propertyDamage[0]?.damageNatureExtent || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'damageNatureExtent', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Estimated Cost of Repair</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.estimatedRepairCost || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'estimatedRepairCost', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Has Claim Been Made?</label>
+                <select className="field-input" value={formData.propertyDamage[0]?.claimMade || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'claimMade', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Is Claimant Insured?</label>
+                <select className="field-input" value={formData.propertyDamage[0]?.claimantInsured || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'claimantInsured', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div className="field-group">
+                <label className="field-label">Claimant's Licence Number</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.claimantLicenceNo || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'claimantLicenceNo', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Insurance Company</label>
+                <input type="text" className="field-input" value={formData.propertyDamage[0]?.claimantInsuranceCompany || ''}
+                  onChange={(e) => handleArrayChange('propertyDamage', 0, 'claimantInsuranceCompany', e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          {/* Witnesses */}
+          <div className="section">
+            <h2 className="section-title">Names and Addresses of Witnesses</h2>
+            <p className="section-note">
+              Whenever possible please obtain names and addresses of witnesses, bystanders or persons who may have seen the accident.
+            </p>
+            {formData.witnesses.map((witness, index) => (
+              <div key={index} className="field-row">
+                <div className="field-group">
+                  <label className="field-label">Witness {index + 1} Name</label>
+                  <input type="text" className="field-input" value={witness.name}
+                    onChange={(e) => handleArrayChange('witnesses', index, 'name', e.target.value)} />
+                </div>
+                <div className="field-group">
+                  <label className="field-label">Address</label>
+                  <input type="text" className="field-input" value={witness.address}
+                    onChange={(e) => handleArrayChange('witnesses', index, 'address', e.target.value)} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      );
+
+      const renderPage3 = () => (
+        <>
+          {/* Damage to Motor Vehicle of Insured */}
+          <div className="section">
+            <h2 className="section-title">Damage to Motor Vehicle of Insured</h2>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Parts Damaged and Extent</label>
+                <textarea className="field-input" value={formData.damage.partsDamaged}
+                  onChange={(e) => handleChange('damage', 'partsDamaged', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Estimated Cost of Repairs</label>
+                <input type="text" className="field-input" value={formData.damage.estimatedRepairCost}
+                  onChange={(e) => handleChange('damage', 'estimatedRepairCost', e.target.value)} />
+              </div>
+            </div>
+            <p className="warning-text">
+              Repairs should only commence with the Company's consent.
+            </p>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Name of Party Who Caused Damage</label>
+                <input type="text" className="field-input" value={formData.damage.partyCausedDamageName}
+                  onChange={(e) => handleChange('damage', 'partyCausedDamageName', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <label className="field-label">Address</label>
+                <input type="text" className="field-input" value={formData.damage.partyCausedDamageAddress}
+                  onChange={(e) => handleChange('damage', 'partyCausedDamageAddress', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Is He/She Insured?</label>
+                <select className="field-input" value={formData.damage.partyInsured}
+                  onChange={(e) => handleChange('damage', 'partyInsured', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div className="field-group">
+                <label className="field-label">Name of Company (if known)</label>
+                <input type="text" className="field-input" value={formData.damage.partyInsuranceCompany}
+                  onChange={(e) => handleChange('damage', 'partyInsuranceCompany', e.target.value)} />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Where May Automobile Be Seen?</label>
+                <input type="text" className="field-input" value={formData.damage.vehicleLocation}
+                  onChange={(e) => handleChange('damage', 'vehicleLocation', e.target.value)} />
+              </div>
+            </div>
+          </div>
+
+          {/* Driver's Account */}
+          <div className="section">
+            <h2 className="section-title">Driver's Account of Accident or Loss</h2>
+            <div className="field-row">
+              <div className="field-group full">
+                <label className="field-label">Driver's Statement</label>
+                <textarea className="field-input"
+                  value={formData.driverStatement.statement}
+                  onChange={(e) => handleChange('driverStatement', 'statement', e.target.value)}
+                  placeholder="Please provide a detailed account of the accident..." />
+              </div>
+            </div>
+            <div className="field-row">
+              <div className="field-group">
+                <label className="field-label">Date</label>
+                <input type="date" className="field-input" value={formData.driverStatement.date}
+                  onChange={(e) => handleChange('driverStatement', 'date', e.target.value)} />
+              </div>
+              <div className="field-group">
+                <SignaturePad
+                  label="Signature of Driver"
+                  value={formData.driverStatement.signature}
+                  onChange={(val) => handleChange('driverStatement', 'signature', val)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Diagram of Accident */}
+          <div className="section">
+            <h2 className="section-title">Diagram of Accident</h2>
+            <div className="diagram-area">
+              <p className="diagram-instruction">
+                GIVE STREET NAMES, DIRECTION AND LOCATION OF OBJECTS CONCERNED
+              </p>
+              <textarea
+                placeholder="Describe the accident scene or draw a diagram (you can describe positions of vehicles, directions, street names, landmarks, etc.)"
+              />
+            </div>
+          </div>
+
+          {/* Declaration */}
+          <div className="section">
+            <h2 className="section-title">Declaration</h2>
+            <div className="declaration-box">
+              <p className="declaration-text">
+                I/We hereby declare that the above statements, facts, and documents are true and that I/we have not
+                withheld from the Company any information within my/our knowledge connected with the accident or loss.
+              </p>
+              <div className="field-row">
+                <div className="field-group">
+                  <label className="field-label">Date</label>
+                  <input type="date" className="field-input" value={formData.declaration.date}
+                    onChange={(e) => handleChange('declaration', 'date', e.target.value)} />
+                </div>
+                <div className="field-group">
+                  <SignaturePad
+                    label="Signature of Insured"
+                    value={formData.declaration.signature}
+                    onChange={(val) => handleChange('declaration', 'signature', val)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {submitStatus && (
+            <div className={`message ${submitStatus.type}`}>
+              {submitStatus.message}
+            </div>
+          )}
+
+          <div className="submit-section">
+            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Submit Claim'}
+            </button>
+          </div>
+        </>
+      );
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <div className="form-header">
+            <h1>MOTOR CLAIM FORM</h1>
+            <p>Please furnish all details using this report</p>
+          </div>
+
+          <div className="company-info">
+            <div>
+              <h3>HARARE ADDRESS</h3>
+              <p>66 Ridgeway North, Borrowdale, Harare</p
+              >          <p>Tel: +263 8677 000 715 </p>
+              <p>Email: queries@aic.co.zw</p>
+            </div>
+            <div>
+              <h3>BULAWAYO ADDRESS</h3>
+              <p>7 Oaks Avenue, Suburbs, Bulawayo</p>
+              <p>Tel: +263 8677 009 113 </p>
+              <p>Email: queries@aic.co.zw</p>
+            </div>
+          </div>
+
+          <div className="page-nav">
+            {[1, 2, 3].map((page) => (
+              <div key={page} className={`page-dot ${currentPage === page ? 'active' : ''}`}
+                onClick={() => setCurrentPage(page)} />
+            ))}
+          </div>
+
+          <div className="form-content">
+            {currentPage === 1 && renderPage1()}
+            {currentPage === 2 && renderPage2()}
+            {currentPage === 3 && renderPage3()}
+
+            <div className="nav-buttons">
+              <button type="button" className="nav-btn secondary"
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}>
+                ← Previous
+              </button>
+              <span className="page-indicator">
+                Page {currentPage} of {totalPages}
+              </span>
+              {currentPage < totalPages ? (
+                <button type="button" className="nav-btn primary"
+                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}>
+                  Next →
+                </button>
+              ) : (
+                <div style={{ width: '100px' }} />
+              )}
+            </div>
+          </div>
+        </form>
+      );
+    }
+
+    // ============================================
+    // CLIENT ONBOARDING FORM COMPONENT
+    // ============================================
+    function ClientOnboardingForm() {
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [submitStatus, setSubmitStatus] = useState(null);
+
+      const [formData, setFormData] = useState({
+        fullName: '',
+        periodOfCover: '',
+        previouslyInsured: '',
+        previousInsurer: '',
+        hadClaimsLast12Months: '',
+        claimsHistory: [
+          { claimType: 'Windscreen', numberOfClaims: '', lossAmount: '' },
+          { claimType: 'Partial Loss - Own Damage', numberOfClaims: '', lossAmount: '' },
+          { claimType: 'Total Loss', numberOfClaims: '', lossAmount: '' },
+          { claimType: 'Theft', numberOfClaims: '', lossAmount: '' },
+          { claimType: 'Third Party Claims', numberOfClaims: '', lossAmount: '' }
+        ],
+        proposerSignature: '',
+        declarationDate: ''
+      });
+
+      const handleChange = (field, value) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+      };
+
+      const handleClaimChange = (index, field, value) => {
+        setFormData(prev => {
+          const newClaims = [...prev.claimsHistory];
+          newClaims[index] = { ...newClaims[index], [field]: value };
+          return { ...prev, claimsHistory: newClaims };
+        });
+      };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+          const response = await fetch(`${API_BASE}/motor-onboarding`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            setSubmitStatus({
+              type: 'success',
+              message: `Onboarding submitted successfully! Reference: ${result.referenceNumber}`
+            });
+          } else {
+            setSubmitStatus({ type: 'error', message: result.message || 'Failed to submit' });
+          }
+        } catch (error) {
+          setSubmitStatus({ type: 'error', message: 'Network error. Please ensure the backend server is running.' });
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <div className="form-header">
+            <h1>NEW CLIENT ONBOARDING FORM – MOTOR</h1>
+            <p>Complete this form to register for motor insurance coverage</p>
+          </div>
+
+          <div className="company-info">
+            <div>
+              <h3>HARARE ADDRESS</h3>
+              <p>66 Ridgeway North, Borrowdale, Harare</p
+              >          <p>Tel: +263 8677 000 715 </p>
+              <p>Email: queries@aic.co.zw</p>
+            </div>
+            <div>
+              <h3>BULAWAYO ADDRESS</h3>
+              <p>7 Oaks Avenue, Suburbs, Bulawayo</p>
+              <p>Tel: +263 8677 009 113 </p>
+              <p>Email: queries@aic.co.zw</p>
+            </div>
+          </div>
+
+
+
+
+
+          <div className="form-content">
+            {/* Client Details */}
+            <div className="section">
+              <h2 className="section-title">Client Details</h2>
+              <div className="field-row">
+                <div className="field-group full">
+                  <label className="field-label">Full Name *</label>
+                  <input type="text" className="field-input" value={formData.fullName}
+                    onChange={(e) => handleChange('fullName', e.target.value)} required minLength="2" />
+                </div>
+              </div>
+              <div className="field-row">
+                <div className="field-group full">
+                  <label className="field-label">Period of Cover *</label>
+                  <input type="text" className="field-input" value={formData.periodOfCover}
+                    onChange={(e) => handleChange('periodOfCover', e.target.value)}
+                    placeholder="e.g., 12 months from 01/01/2024" required />
+                </div>
+              </div>
+            </div>
+
+            {/* Previous Insurance */}
+            <div className="section">
+              <h2 className="section-title">Previous Insurance History</h2>
+              <div className="field-row">
+                <div className="field-group">
+                  <label className="field-label">Have You Been Insured Before?</label>
+                  <div className="checkbox-group">
+                    <label className="checkbox-item">
+                      <input type="radio" name="previouslyInsured" value="yes"
+                        checked={formData.previouslyInsured === 'yes'}
+                        onChange={(e) => handleChange('previouslyInsured', e.target.value)} />
+                      <span className="checkbox-label">Yes</span>
+                    </label>
+                    <label className="checkbox-item">
+                      <input type="radio" name="previouslyInsured" value="no"
+                        checked={formData.previouslyInsured === 'no'}
+                        onChange={(e) => handleChange('previouslyInsured', e.target.value)} />
+                      <span className="checkbox-label">No</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              {formData.previouslyInsured === 'yes' && (
+                <div className="field-row">
+                  <div className="field-group full">
+                    <label className="field-label">Previous Insurer</label>
+                    <input type="text" className="field-input" value={formData.previousInsurer}
+                      onChange={(e) => handleChange('previousInsurer', e.target.value)} />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Claims History */}
+            <div className="section">
+              <h2 className="section-title">Claims History (Past 12 Months)</h2>
+              <div className="field-row">
+                <div className="field-group">
+                  <label className="field-label">Have You Claimed on Your Motor Policy in the Past 12 Months?</label>
+                  <div className="checkbox-group">
+                    <label className="checkbox-item">
+                      <input type="radio" name="hadClaims" value="yes"
+                        checked={formData.hadClaimsLast12Months === 'yes'}
+                        onChange={(e) => handleChange('hadClaimsLast12Months', e.target.value)} />
+                      <span className="checkbox-label">Yes</span>
+                    </label>
+                    <label className="checkbox-item">
+                      <input type="radio" name="hadClaims" value="no"
+                        checked={formData.hadClaimsLast12Months === 'no'}
+                        onChange={(e) => handleChange('hadClaimsLast12Months', e.target.value)} />
+                      <span className="checkbox-label">No</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              {formData.hadClaimsLast12Months === 'yes' && (
+                <>
+                  <h3 className="subsection-title">Previous Claim Details</h3>
+                  <table className="data-table">
+                    <thead>
+                      <tr>
+                        <th>Type of Claim</th>
+                        <th>Number of Claims</th>
+                        <th>Loss Amount (USD)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {formData.claimsHistory.map((claim, index) => (
+                        <tr key={index}>
+                          <td>{claim.claimType}</td>
+                          <td>
+                            <input type="number" min="0" value={claim.numberOfClaims}
+                              onChange={(e) => handleClaimChange(index, 'numberOfClaims', e.target.value)} />
+                          </td>
+                          <td>
+                            <input type="number" min="0" step="0.01" value={claim.lossAmount}
+                              onChange={(e) => handleClaimChange(index, 'lossAmount', e.target.value)} />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </>
+              )}
+            </div>
+
+            {/* Rating Guide */}
+            <div className="rating-guide">
+              <h4>Rating Guide</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Loss Ratio</th>
+                    <th>Rate (excl. Excess Buy Back)</th>
+                    <th>Excess</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Less than 60%</td>
+                    <td>4%</td>
+                    <td>Normal excesses</td>
+                  </tr>
+                  <tr>
+                    <td>61% - 75%</td>
+                    <td>5%</td>
+                    <td>5% and 10% with min USD 150.00</td>
+                  </tr>
+                  <tr>
+                    <td>76% - 100%</td>
+                    <td>7%</td>
+                    <td>5% and 10% with min USD 250.00</td>
+                  </tr>
+                  <tr>
+                    <td>101% and above</td>
+                    <td>10% (no excess buy back)</td>
+                    <td>7.5% and 12.5% with min USD 500.00</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="section-note">
+                *This applies where client has suffered at least 2 claims within 12 months.
+                *If client has other supporting business, other considerations can be made.
+                *Restrict cover to RTA where appropriate.
+              </p>
+            </div>
+
+            {/* Declaration */}
+            <div className="section">
+              <h2 className="section-title">Declaration</h2>
+              <div className="declaration-box">
+                <p className="declaration-text">
+                  We declare that the particulars entered on this proposal are correct to the best of our knowledge
+                  and we are aware that they will form the basis of the contract. We hereby authorise Alliance Insurance
+                  Company to verify details about my previous policy with my previous insurer where necessary.
+                </p>
+                <div className="field-row">
+                  <div className="field-group">
+                    <SignaturePad
+                      label="Proposer's Signature"
+                      value={formData.proposerSignature}
+                      onChange={(val) => handleChange('proposerSignature', val)}
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Date</label>
+                    <input type="date" className="field-input" value={formData.declarationDate}
+                      onChange={(e) => handleChange('declarationDate', e.target.value)} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {submitStatus && (
+              <div className={`message ${submitStatus.type}`}>
+                {submitStatus.message}
+              </div>
+            )}
+
+            <div className="submit-section">
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit Onboarding Form'}
+              </button>
+            </div>
+          </div>
+        </form>
+      );
+    }
+
+    // ============================================
+    // MAIN APP COMPONENT
+    // ============================================
+    function App() {
+      return (
+        <div className="app-container">
+          <div className="nav-header">
+            <div className="logo-container">
+              <img src="./logo.jpg" alt="Alliance Insurance" style={{ height: '60px', objectFit: 'contain' }} />
+            </div>
+            <button className="nav-tab" onClick={() => window.location.href = 'index.html'}>
+              ← Back to Home
+            </button>
+          </div>
+
+          <div className="form-container">
+            <MotorClaimForm />
+          </div>
+
+          <div className="app-footer">
+            <p>ALLIANCE INSURANCE COMPANY (PVT) LIMITED</p>
+            <p>© {new Date().getFullYear()} All Rights Reserved</p>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+
+</html>

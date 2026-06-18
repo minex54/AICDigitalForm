@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance Insurance Company - Self Service Portal</title>
+    <meta name="description"
+        content="Secure access to Alliance Insurance Company digital forms including claims and onboarding">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #8B2332;
+            --burgundy-dark: #6B1825;
+            --burgundy-light: #A63345;
+            --blue-grey: #405C75;
+            --blue-grey-dark: #2F4558;
+            --blue-grey-light: #5A7A98;
+            --white: #FFFFFF;
+            --off-white: #F8F9FA;
+            --light-grey: #E9ECEF;
+            --text-dark: #212529;
+            --text-muted: #6C757D;
+            --success: #28A745;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--off-white);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(90deg, var(--blue-grey-dark) 0%, var(--burgundy) 100%);
+            padding: 16px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .staff-login-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .staff-login-btn:hover {
+            background: white;
+            color: var(--blue-grey-dark);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--blue-grey-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ── Cards Section ── */
+        .cards-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+            animation: fadeInGrid 0.5s ease;
+        }
+
+        @keyframes fadeInGrid {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Filter Pills ── */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+            padding: 8px;
+            background: white;
+            width: fit-content;
+            border-radius: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-grey);
+        }
+
+        .filter-pill {
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .filter-pill:hover {
+            color: var(--blue-grey-dark);
+            background: var(--off-white);
+        }
+
+        .filter-pill.active {
+            background: var(--blue-grey);
+            color: white;
+            box-shadow: 0 4px 12px rgba(64, 92, 117, 0.3);
+        }
+
+        /* ── Category Label ── */
+        .category-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            background: var(--light-grey);
+            color: var(--text-muted);
+        }
+
+        .category-label.applications {
+            background: rgba(139, 35, 50, 0.1);
+            color: var(--burgundy);
+        }
+
+        .category-label.claims {
+            background: rgba(64, 92, 117, 0.1);
+            color: var(--blue-grey);
+        }
+
+        .category-label.kyc {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+        }
+
+        /* ── Form Card ── */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid var(--light-grey);
+            border-top: 4px solid var(--blue-grey);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-align: center;
+        }
+
+        .form-card.onboarding-card {
+            border-top-color: var(--burgundy);
+        }
+
+        .form-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue-grey-light);
+            border-top-color: inherit;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background: var(--off-white);
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .form-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--blue-grey-dark);
+            margin-bottom: 12px;
+        }
+
+        .form-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card-btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            background: var(--blue-grey);
+            font-family: inherit;
+        }
+
+        .card-btn.onboarding-btn {
+            background: var(--burgundy);
+        }
+
+        .card-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* ── Info Banner ── */
+        .info-banner {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 20px 24px;
+            margin: 40px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+        }
+
+        .info-banner p {
+            font-size: 14px;
+            color: var(--blue-grey-dark);
+            line-height: 1.6;
+        }
+
+        .info-banner strong {
+            color: var(--blue-grey-dark);
+            font-weight: 700;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: linear-gradient(90deg, var(--blue-grey-dark) 0%, var(--burgundy) 100%);
+            color: white;
+            text-align: center;
+            padding: 24px;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* ── Modal ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: transparent;
+            border: none;
+            font-size: 28px;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--light-grey);
+            color: var(--text-dark);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .modal-logo {
+            width: 120px; height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .modal-logo img {
+            width: 100%; height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-header h2 {
+            color: var(--text-dark);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.05));
+            color: var(--success);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        /* ── Slider CAPTCHA ── */
+        .captcha-section {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background: var(--light-grey);
+            border-radius: 25px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 2px solid var(--light-grey);
+            user-select: none;
+            cursor: default;
+        }
+
+        .slider-track-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .slider-progress {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(139, 35, 50, 0.1), rgba(139, 35, 50, 0.2));
+            z-index: 2;
+            border-radius: 25px 0 0 25px;
+            transition: background 0.3s;
+            width: 25px;
+        }
+
+        .slider-progress.success {
+            background: rgba(40, 167, 69, 0.2);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 4px; left: 4px;
+            width: 42px; height: 42px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: grab;
+            z-index: 3;
+            transition: left 0.05s linear;
+        }
+
+        .slider-handle:active { cursor: grabbing; }
+
+        .slider-handle.success {
+            background: var(--success);
+            color: white;
+            cursor: default;
+        }
+
+        .slider-handle-icon {
+            font-size: 18px;
+            pointer-events: none;
+        }
+
+        .redirect-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.05));
+            color: var(--success);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 0;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .header-title { display: none; }
+            .hero h1 { font-size: 28px; }
+            .hero p  { font-size: 14px; }
+            .cards-container { grid-template-columns: 1fr; }
+            .modal-container { padding: 36px 24px; }
+            .modal-logo { width: 100px; height: 100px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Header ── -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <img src="./logo.jpg" alt="Alliance Insurance" class="logo">
+                <span class="header-title">Self Service Portal</span>
+            </div>
+            <a href="/admin" class="staff-login-btn">Staff Login</a>
+        </div>
+    </header>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alliance Insurance Company</h1>
+            <p>Where service still matters! Access all digital forms in one place. Select a category below to quickly find your form.</p>
+        </div>
+    </section>
+
+    <!-- ── Cards Section ── -->
+    <section class="cards-section">
+
+        <!-- Category Filter Pills -->
+        <div class="filter-container">
+            <button class="filter-pill active" data-category="all" onclick="filterCards('all')">
+                <span>📁</span> All Forms
+            </button>
+            <button class="filter-pill" data-category="applications" onclick="filterCards('applications')">
+                <span>📋</span> Applications
+            </button>
+            <button class="filter-pill" data-category="claims" onclick="filterCards('claims')">
+                <span>🛡️</span> Claims
+            </button>
+            <button class="filter-pill" data-category="kyc" onclick="filterCards('kyc')">
+                <span>🆔</span> KYC
+            </button>
+        </div>
+
+        <!-- Form Cards -->
+        <div class="cards-container" id="cardsContainer"></div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <p><strong>For Staff Members:</strong> If you are a reviewer or administrator, please use the Staff Login button above to access the review dashboard.</p>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <p>© 2026 Alliance Insurance Company. All rights reserved.</p>
+    </footer>
+
+    <!-- ── CAPTCHA Modal ── -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">×</button>
+
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <img src="./logo.jpg" alt="Alliance Insurance Company">
+                </div>
+                <h2>Security Verification</h2>
+                <p>Please verify you're human to continue</p>
+                <div class="security-badge">
+                    <span>🔒</span>
+                    <span>Secure &amp; Encrypted</span>
+                </div>
+            </div>
+
+            <div class="captcha-section"
+                id="captchaSection"
+                onmousemove="onDrag(event)"
+                onmouseup="endDrag()"
+                onmouseleave="endDrag()"
+                ontouchmove="onDrag(event)"
+                ontouchend="endDrag()">
+
+                <div class="slider-container" id="sliderContainer">
+                    <div class="slider-track-text" id="sliderText">Slide to verify</div>
+                    <div class="slider-progress" id="sliderProgress"></div>
+                    <div class="slider-handle" id="sliderHandle"
+                        onmousedown="startDrag(event)"
+                        ontouchstart="startDrag(event)">
+                        <span class="slider-handle-icon" id="sliderIcon">→</span>
+                    </div>
+                </div>
+
+                <div id="redirectBadge" style="display:none;" class="redirect-badge">
+                    <span>✓</span><span>Redirecting…</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Form definitions ──────────────────────────────────────────────────
+        const FORMS = [
+            { id: 'motor_insurance',   category: 'applications', title: 'Motor Insurance',    icon: '🚗', desc: 'Apply for comprehensive motor vehicle insurance coverage.',            url: 'motor_insurance_form.html',    btnType: 'motor',       btnLabel: 'Start Application' },
+            { id: 'travel_insurance',  category: 'applications', title: 'Travel Insurance',   icon: '✈️', desc: 'Get protected for your domestic and international travels.',           url: 'travel_insurance_form.html',   btnType: 'onboarding',  btnLabel: 'Start Application' },
+            { id: 'domestic_proposal', category: 'applications', title: 'Domestic Proposal',  icon: '🏠', desc: 'Submit your domestic insurance proposal application.',                 url: 'domestic_proposal_form.html',  btnType: 'motor',       btnLabel: 'Start Application' },
+            { id: 'hospital_cashback', category: 'applications', title: 'Hospital Cash Back', icon: '🏥', desc: 'Apply for hospital cash back insurance coverage.',                    url: 'hospital_cashback_form.html',  btnType: 'onboarding',  btnLabel: 'Start Application' },
+            { id: 'onboarding',        category: 'applications', title: 'Client Onboarding',  icon: '📝', desc: 'Complete this form to register for new motor insurance.',             url: 'Client_Onboarding.html',       btnType: 'motor',       btnLabel: 'Start Application' },
+            { id: 'claim',             category: 'claims',        title: 'Motor Claim',        icon: '🛠️', desc: 'Already a Policy Holder? Submit your motor claim form.',             url: 'Motor_Claim_Form.html',        btnType: 'onboarding',  btnLabel: 'Start Claim' },
+            { id: 'kyc_individual',    category: 'kyc',           title: 'KYC - Individual',   icon: '👤', desc: 'Complete your Know Your Customer verification as an individual.',    url: 'kyc_individual_form.html',     btnType: 'onboarding',  btnLabel: 'Start Application' },
+            { id: 'kyc_corporate',     category: 'kyc',           title: 'KYC - Corporate',    icon: '🏢', desc: 'Complete your Know Your Customer verification for your business.',  url: 'kyc_corporate_form.html',      btnType: 'motor',       btnLabel: 'Start Application' },
+        ];
+
+        let selectedFormUrl = null;
+        let isDragging = false;
+        let isVerified = false;
+        let sliderPos = 0;
+        let activeCategory = 'all';
+
+        // ── Render cards ─────────────────────────────────────────────────────
+        function renderCards(category) {
+            const container = document.getElementById('cardsContainer');
+            const filtered = category === 'all' ? FORMS : FORMS.filter(f => f.category === category);
+
+            container.innerHTML = '';
+            filtered.forEach(form => {
+                const isOnboarding = form.btnType === 'onboarding';
+                const catLabel = form.category === 'applications' ? 'Application' : form.category.toUpperCase();
+
+                const card = document.createElement('div');
+                card.className = 'form-card' + (isOnboarding ? ' onboarding-card' : '');
+                card.setAttribute('data-id', form.id);
+                card.innerHTML = `
+                    <span class="category-label ${form.category}">${catLabel}</span>
+                    <div class="card-icon">${form.icon}</div>
+                    <h3>${form.title}</h3>
+                    <p>${form.desc}</p>
+                    <button class="card-btn ${isOnboarding ? 'onboarding-btn' : ''}">${form.btnLabel}</button>
+                `;
+                card.addEventListener('click', () => openModal(form.url));
+                container.appendChild(card);
+            });
+
+            // Re-animate
+            container.style.animation = 'none';
+            container.offsetHeight; // reflow
+            container.style.animation = '';
+        }
+
+        // ── Category filter ───────────────────────────────────────────────────
+        function filterCards(category) {
+            activeCategory = category;
+            document.querySelectorAll('.filter-pill').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+            renderCards(category);
+        }
+
+        // ── Modal ─────────────────────────────────────────────────────────────
+        function openModal(formUrl) {
+            selectedFormUrl = formUrl;
+            resetCaptcha();
+            document.getElementById('modalOverlay').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('open');
+            selectedFormUrl = null;
+            resetCaptcha();
+        }
+
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ── CAPTCHA Slider ────────────────────────────────────────────────────
+        function resetCaptcha() {
+            isDragging = false;
+            isVerified = false;
+            sliderPos = 0;
+            const handle   = document.getElementById('sliderHandle');
+            const progress = document.getElementById('sliderProgress');
+            const text     = document.getElementById('sliderText');
+            const icon     = document.getElementById('sliderIcon');
+            const badge    = document.getElementById('redirectBadge');
+
+            handle.style.left = '4px';
+            handle.classList.remove('success');
+            progress.style.width = '25px';
+            progress.classList.remove('success');
+            text.textContent = 'Slide to verify';
+            icon.textContent = '→';
+            badge.style.display = 'none';
+        }
+
+        function startDrag(e) {
+            if (isVerified) return;
+            isDragging = true;
+            e.preventDefault();
+        }
+
+        function onDrag(e) {
+            if (!isDragging || isVerified) return;
+            e.preventDefault();
+            const container = document.getElementById('sliderContainer');
+            const rect = container.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const max = rect.width - 50;
+            let pos = clientX - rect.left - 25;
+            pos = Math.max(0, Math.min(pos, max));
+            sliderPos = pos;
+
+            document.getElementById('sliderHandle').style.left = (pos + 4) + 'px';
+            document.getElementById('sliderProgress').style.width = (pos + 25) + 'px';
+
+            if (pos >= max - 5) {
+                isDragging = false;
+                handleVerify();
+            }
+        }
+
+        function endDrag() {
+            if (isVerified) return;
+            if (isDragging) {
+                isDragging = false;
+                // Snap back if not verified
+                if (!isVerified) {
+                    sliderPos = 0;
+                    document.getElementById('sliderHandle').style.transition = 'left 0.3s ease';
+                    document.getElementById('sliderHandle').style.left = '4px';
+                    document.getElementById('sliderProgress').style.width = '25px';
+                    setTimeout(() => {
+                        document.getElementById('sliderHandle').style.transition = '';
+                    }, 300);
+                }
+            }
+        }
+
+        function handleVerify() {
+            isVerified = true;
+            const handle   = document.getElementById('sliderHandle');
+            const progress = document.getElementById('sliderProgress');
+            const text     = document.getElementById('sliderText');
+            const icon     = document.getElementById('sliderIcon');
+            const badge    = document.getElementById('redirectBadge');
+
+            handle.classList.add('success');
+            progress.classList.add('success');
+            text.textContent = 'Verification Successful';
+            icon.textContent = '✓';
+            badge.style.display = 'inline-flex';
+
+            setTimeout(() => {
+                window.location.href = selectedFormUrl;
+            }, 800);
+        }
+
+        // ── Init ──────────────────────────────────────────────────────────────
+        renderCards('all');
+    </script>
+
+</body>
+</html>

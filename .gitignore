@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.npm
+package-lock.json
+
+# Database
+backend/digitalforms.db
+backend/digitalforms.db-journal
+backend/digitalforms.db-wal
+backend/digitalforms.db-shm
+backend/digitalforms.db.bak
+
+# IDE & Logs
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+
+# Docker
+.dockerignore
+Dockerfile
+
+# OS files
+.DS_Store
+Thumbs.db
