@@ -728,6 +728,7 @@
         </select>
         <button class="refresh-btn" onclick="exportToCSV()">📥 Download CSV</button>
         <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+        <span id="lastUpdated" style="font-size:12px;color:var(--text-muted);margin-left:4px;"></span>
       </div>
 
       <!-- Table -->
@@ -785,6 +786,7 @@
   <script>
     const API = '/api';
     let allSubmissions = [];
+    let autoRefreshInterval = null;
     let currentRecord = null;
     let currentFilteredSubmissions = []; // To store the currently filtered data for export
 
@@ -1014,6 +1016,9 @@
             document.getElementById('loginOverlay').style.display = 'none';
             document.getElementById('app').classList.add('visible');
             loadData();
+            // Auto-refresh every 30 seconds
+            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+            autoRefreshInterval = setInterval(() => loadData(true), 30000);
           } else {
             showLoginError();
           }
@@ -1028,10 +1033,12 @@
     }
 
     function doLogout() {
+      if (autoRefreshInterval) { clearInterval(autoRefreshInterval); autoRefreshInterval = null; }
       document.getElementById('app').classList.remove('visible');
       document.getElementById('loginOverlay').style.display = 'flex';
       document.getElementById('loginUser').value = '';
       document.getElementById('loginPass').value = '';
+      document.getElementById('lastUpdated').textContent = '';
     }
 
     // Allow Enter key on login
@@ -1039,10 +1046,12 @@
     document.getElementById('loginUser').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
     // ── Data Loading ────────────────────────────────────────────────────────
-    async function loadData() {
-      document.getElementById('tableLoading').style.display = 'block';
-      document.getElementById('submissionsTable').style.display = 'none';
-      document.getElementById('emptyState').style.display = 'none';
+    async function loadData(silent = false) {
+      if (!silent) {
+        document.getElementById('tableLoading').style.display = 'block';
+        document.getElementById('submissionsTable').style.display = 'none';
+        document.getElementById('emptyState').style.display = 'none';
+      }
 
       try {
         const [submissionsRes, statsRes] = await Promise.all([
@@ -1053,10 +1062,16 @@
         allSubmissions = submissionsRes.data || [];
         renderStats(statsRes);
         filterTable();
+
+        // Update last-updated timestamp
+        const now = new Date().toLocaleTimeString('en-ZW', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('lastUpdated').textContent = `Last updated: ${now}`;
       } catch (err) {
         console.error('Failed to load data:', err);
       } finally {
-        document.getElementById('tableLoading').style.display = 'none';
+        if (!silent) {
+          document.getElementById('tableLoading').style.display = 'none';
+        }
       }
     }
 
