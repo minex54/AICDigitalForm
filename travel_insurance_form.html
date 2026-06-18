@@ -1333,7 +1333,7 @@
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData);
 
-                const response = await fetch('http://localhost:3001/api/travel-insurance', {
+                const response = await fetch('/api/travel-insurance', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -1348,7 +1348,7 @@
                     alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
                 }
             } catch (err) {
-                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                alert('❌ Could not connect to the server. Please ensure the backend is running.');
                 console.error('Submission error:', err);
             } finally {
                 submitBtn.textContent = originalText;
