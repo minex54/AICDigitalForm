@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors());
@@ -50,8 +50,7 @@ app.listen(PORT, () => {
     console.log('');
     console.log('╔════════════════════════════════════════════╗');
     console.log('║  Alliance Insurance – DigitalForms Server  ║');
-    console.log(`║  Running on http://localhost:${PORT}           ║`);
-    console.log('║  Admin:    http://localhost:3001/admin      ║');
+    console.log(`║  Running on port: ${PORT}                      ║`);
     console.log('╚════════════════════════════════════════════╝');
     console.log('');
 });
