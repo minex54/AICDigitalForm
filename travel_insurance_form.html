@@ -368,6 +368,29 @@
             background: var(--primary-dark);
             transform: translateY(-1px);
         }
+        .remove-traveler-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .remove-traveler-btn:hover {
+            background: var(--burgundy);
+            color: white;
+        }
+
+        .add-traveler-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         .note {
             background: #f0f4f8;
@@ -724,6 +747,8 @@
                                 <th>First Names</th>
                                 <th>Age</th>
                                 <th>Passport No.</th>
+                                <th></th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -733,37 +758,12 @@
                                 <td><input type="text" name="travelerFirstName1" required></td>
                                 <td><input type="number" name="travelerAge1" min="0" max="120" required></td>
                                 <td><input type="text" name="travelerPassport1" required></td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <td class="row-number">2</td>
-                                <td><input type="text" name="travelerSurname2"></td>
-                                <td><input type="text" name="travelerFirstName2"></td>
-                                <td><input type="number" name="travelerAge2" min="0" max="120"></td>
-                                <td><input type="text" name="travelerPassport2"></td>
-                            </tr>
-                            <tr>
-                                <td class="row-number">3</td>
-                                <td><input type="text" name="travelerSurname3"></td>
-                                <td><input type="text" name="travelerFirstName3"></td>
-                                <td><input type="number" name="travelerAge3" min="0" max="120"></td>
-                                <td><input type="text" name="travelerPassport3"></td>
-                            </tr>
-                            <tr>
-                                <td class="row-number">4</td>
-                                <td><input type="text" name="travelerSurname4"></td>
-                                <td><input type="text" name="travelerFirstName4"></td>
-                                <td><input type="number" name="travelerAge4" min="0" max="120"></td>
-                                <td><input type="text" name="travelerPassport4"></td>
-                            </tr>
-                            <tr>
-                                <td class="row-number">5</td>
-                                <td><input type="text" name="travelerSurname5"></td>
-                                <td><input type="text" name="travelerFirstName5"></td>
-                                <td><input type="number" name="travelerAge5" min="0" max="120"></td>
-                                <td><input type="text" name="travelerPassport5"></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
+                    <button type="button" id="addTravelerBtn" class="add-traveler-btn" onclick="addTravelerRow()">+ Add Traveler</button>
                 </div>
 
                 <!-- Cover Details -->
@@ -1215,6 +1215,55 @@
     </div>
 
     <script>
+// Dynamic traveler rows
+        const MAX_TRAVELERS = 5;
+        let travelerCount = 1;
+        let nextTravelerId = 1;
+
+        function addTravelerRow() {
+            if (travelerCount >= MAX_TRAVELERS) return;
+            travelerCount++;
+            nextTravelerId++;
+
+            const tbody = document.querySelector('#travelersTable tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="row-number">${travelerCount}</td>
+                <td><input type="text" name="travelerSurname${nextTravelerId}"></td>
+                <td><input type="text" name="travelerFirstName${nextTravelerId}"></td>
+                <td><input type="number" name="travelerAge${nextTravelerId}" min="0" max="120"></td>
+                <td><input type="text" name="travelerPassport${nextTravelerId}"></td>
+                <td><button type="button" class="remove-traveler-btn" onclick="removeTravelerRow(this)">&times;</button></td>
+            `;
+            tbody.appendChild(row);
+
+            const addBtn = document.getElementById('addTravelerBtn');
+            if (travelerCount >= MAX_TRAVELERS) {
+                addBtn.disabled = true;
+                addBtn.textContent = 'Maximum of 5 travelers reached';
+            }
+        }
+
+        function removeTravelerRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            travelerCount--;
+
+            document.querySelectorAll('#travelersTable tbody tr').forEach((r, idx) => {
+                r.querySelector('.row-number').textContent = idx + 1;
+            });
+
+            const addBtn = document.getElementById('addTravelerBtn');
+            addBtn.disabled = false;
+            addBtn.textContent = '+ Add Traveler';
+        }
+
+
+
+
+
+
+        
         // Tab switching
         function switchTab(tabIndex) {
             const tabs = document.querySelectorAll('.tab');
