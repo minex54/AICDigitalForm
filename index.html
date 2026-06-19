@@ -787,8 +787,11 @@
             icon.textContent = '✓';
             badge.style.display = 'inline-flex';
 
+            const targetUrl =selectedFormUrl
             setTimeout(() => {
-                window.location.href = selectedFormUrl;
+                if (targetUrl) {
+                window.location.href = targetUrl;
+                }
             }, 800);
         }
 
