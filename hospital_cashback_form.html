@@ -391,9 +391,27 @@
             color: white;
         }
 
-        .add-beneficiary-btn:disabled {
+        addBeneficiaryRow() {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+
+        .remove-row-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .remove-row-btn:hover {
+            background: var(--burgundy);
+            color: white;
         }
         
 
@@ -770,6 +788,7 @@
                             <th>Date of Birth</th>
                             <th>I.D Number or Birth Certificate Number</th>
                             <th>Plan</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -779,6 +798,7 @@
                             <td><input type="date" name="beneficiaryDob1"></td>
                             <td><input type="text" name="beneficiaryId1"></td>
                             <td><input type="text" name="beneficiaryPlan1"></td>
+                            <td></td>
                         </tr>
                       
                     </tbody>
@@ -808,21 +828,25 @@
     <script>
 
      // Dynamic beneficiary rows
+   // Dynamic beneficiary rows
         const MAX_BENEFICIARIES = 10;
-        let beneficiaryCount = 1;
+        let beneficiaryCount = 1;       // how many rows are currently visible
+        let nextBeneficiaryId = 1;      // unique id used for naming fields, never reused
 
         function addBeneficiaryRow() {
             if (beneficiaryCount >= MAX_BENEFICIARIES) return;
             beneficiaryCount++;
+            nextBeneficiaryId++;
 
             const tbody = document.querySelector('#beneficiariesTable tbody');
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="row-number">${beneficiaryCount}</td>
-                <td><input type="text" name="beneficiaryName${beneficiaryCount}"></td>
-                <td><input type="date" name="beneficiaryDob${beneficiaryCount}"></td>
-                <td><input type="text" name="beneficiaryId${beneficiaryCount}"></td>
-                <td><input type="text" name="beneficiaryPlan${beneficiaryCount}"></td>
+                <td><input type="text" name="beneficiaryName${nextBeneficiaryId}"></td>
+                <td><input type="date" name="beneficiaryDob${nextBeneficiaryId}"></td>
+                <td><input type="text" name="beneficiaryId${nextBeneficiaryId}"></td>
+                <td><input type="text" name="beneficiaryPlan${nextBeneficiaryId}"></td>
+                <td><button type="button" class="remove-row-btn" onclick="removeBeneficiaryRow(this)">&times;</button></td>
             `;
             tbody.appendChild(row);
 
@@ -833,6 +857,20 @@
             }
         }
 
+        function removeBeneficiaryRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            beneficiaryCount--;
+
+            // Renumber the visible "#" column so it stays sequential
+            document.querySelectorAll('#beneficiariesTable tbody tr').forEach((r, idx) => {
+                r.querySelector('.row-number').textContent = idx + 1;
+            });
+
+            const addBtn = document.getElementById('addBeneficiaryBtn');
+            addBtn.disabled = false;
+            addBtn.textContent = '+ Add Beneficiary';
+        }
 
 
 
