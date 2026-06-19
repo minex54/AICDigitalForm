@@ -1277,7 +1277,7 @@
                     alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
                 }
             } catch (err) {
-                alert('❌ Could not connect to the server. Please ensure the backend is running on http://localhost:3001');
+                alert('❌ Could not connect to the server. Please try again shortly');
                 console.error('Submission error:', err);
             } finally {
                 submitBtn.textContent = originalText;
