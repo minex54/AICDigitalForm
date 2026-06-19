@@ -333,7 +333,7 @@
         }
 
         .beneficiaries-table th {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
+            background: linear-gradient(135deg, #4a5f7f 0%, #5c6d8a 25%, #7d5670 75%, #8b3a52 100%);
             color: white;
             font-weight: 600;
             font-size: 0.9rem;
@@ -373,6 +373,29 @@
             font-weight: 600;
             color: var(--text-medium);
         }
+        .add-beneficiary-btn {
+            margin-top: 1rem;
+            padding: 0.625rem 1.5rem;
+            border: 1px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .add-beneficiary-btn:hover:not(:disabled) {
+            background: var(--burgundy);
+            color: white;
+        }
+
+        .add-beneficiary-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
 
         .count-row {
             display: flex;
@@ -757,72 +780,10 @@
                             <td><input type="text" name="beneficiaryId1"></td>
                             <td><input type="text" name="beneficiaryPlan1"></td>
                         </tr>
-                        <tr>
-                            <td class="row-number">2</td>
-                            <td><input type="text" name="beneficiaryName2"></td>
-                            <td><input type="date" name="beneficiaryDob2"></td>
-                            <td><input type="text" name="beneficiaryId2"></td>
-                            <td><input type="text" name="beneficiaryPlan2"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">3</td>
-                            <td><input type="text" name="beneficiaryName3"></td>
-                            <td><input type="date" name="beneficiaryDob3"></td>
-                            <td><input type="text" name="beneficiaryId3"></td>
-                            <td><input type="text" name="beneficiaryPlan3"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">4</td>
-                            <td><input type="text" name="beneficiaryName4"></td>
-                            <td><input type="date" name="beneficiaryDob4"></td>
-                            <td><input type="text" name="beneficiaryId4"></td>
-                            <td><input type="text" name="beneficiaryPlan4"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">5</td>
-                            <td><input type="text" name="beneficiaryName5"></td>
-                            <td><input type="date" name="beneficiaryDob5"></td>
-                            <td><input type="text" name="beneficiaryId5"></td>
-                            <td><input type="text" name="beneficiaryPlan5"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">6</td>
-                            <td><input type="text" name="beneficiaryName6"></td>
-                            <td><input type="date" name="beneficiaryDob6"></td>
-                            <td><input type="text" name="beneficiaryId6"></td>
-                            <td><input type="text" name="beneficiaryPlan6"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">7</td>
-                            <td><input type="text" name="beneficiaryName7"></td>
-                            <td><input type="date" name="beneficiaryDob7"></td>
-                            <td><input type="text" name="beneficiaryId7"></td>
-                            <td><input type="text" name="beneficiaryPlan7"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">8</td>
-                            <td><input type="text" name="beneficiaryName8"></td>
-                            <td><input type="date" name="beneficiaryDob8"></td>
-                            <td><input type="text" name="beneficiaryId8"></td>
-                            <td><input type="text" name="beneficiaryPlan8"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">9</td>
-                            <td><input type="text" name="beneficiaryName9"></td>
-                            <td><input type="date" name="beneficiaryDob9"></td>
-                            <td><input type="text" name="beneficiaryId9"></td>
-                            <td><input type="text" name="beneficiaryPlan9"></td>
-                        </tr>
-                        <tr>
-                            <td class="row-number">10</td>
-                            <td><input type="text" name="beneficiaryName10"></td>
-                            <td><input type="date" name="beneficiaryDob10"></td>
-                            <td><input type="text" name="beneficiaryId10"></td>
-                            <td><input type="text" name="beneficiaryPlan10"></td>
-                        </tr>
+                      
                     </tbody>
                 </table>
-
+                        <button type="button" id="addBeneficiaryBtn" class="add-beneficiary-btn" onclick="addBeneficiaryRow()">+ Add Beneficiary</button>
                 <div class="count-row">
                     <div class="count-item">
                         <label for="numAdults">Number of Adults</label>
@@ -835,7 +796,7 @@
                 </div>
             </div>
 
-            <!-- Office Use Only Section -->
+          
    
 
             <div class="submit-container">
@@ -845,6 +806,40 @@
     </div>
 
     <script>
+
+     // Dynamic beneficiary rows
+        const MAX_BENEFICIARIES = 10;
+        let beneficiaryCount = 1;
+
+        function addBeneficiaryRow() {
+            if (beneficiaryCount >= MAX_BENEFICIARIES) return;
+            beneficiaryCount++;
+
+            const tbody = document.querySelector('#beneficiariesTable tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="row-number">${beneficiaryCount}</td>
+                <td><input type="text" name="beneficiaryName${beneficiaryCount}"></td>
+                <td><input type="date" name="beneficiaryDob${beneficiaryCount}"></td>
+                <td><input type="text" name="beneficiaryId${beneficiaryCount}"></td>
+                <td><input type="text" name="beneficiaryPlan${beneficiaryCount}"></td>
+            `;
+            tbody.appendChild(row);
+
+            const addBtn = document.getElementById('addBeneficiaryBtn');
+            if (beneficiaryCount >= MAX_BENEFICIARIES) {
+                addBtn.disabled = true;
+                addBtn.textContent = 'Maximum of 10 beneficiaries reached';
+            }
+        }
+
+
+
+
+
+
+
+        
         // Set current date as default for signature date
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('signatureDate').value = today;
